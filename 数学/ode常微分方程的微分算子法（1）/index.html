@@ -7,23 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>取值范围 - iNx</title>
+<title>ODE常微分方程的微分算子法（1） - iNx</title>
 
 
-    <meta name="description" content="题目 函数 $f(x)&#x3D;\sqrt{2x-x^2}+x$ 的值域为____．  思考ing…">
+    <meta name="description" content="常微分方程的微分算子法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="取值范围">
-<meta property="og:url" content="http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/index.html">
+<meta property="og:title" content="ODE常微分方程的微分算子法（1）">
+<meta property="og:url" content="http://inxli.cn/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/index.html">
 <meta property="og:site_name" content="iNx">
-<meta property="og:description" content="题目 函数 $f(x)&#x3D;\sqrt{2x-x^2}+x$ 的值域为____．  思考ing…">
+<meta property="og:description" content="常微分方程的微分算子法">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200402.jfif">
-<meta property="article:published_time" content="2020-04-02T08:55:22.000Z">
-<meta property="article:modified_time" content="2020-04-02T09:32:16.139Z">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/2004031.jfif">
+<meta property="article:published_time" content="2020-04-03T13:43:57.000Z">
+<meta property="article:modified_time" content="2020-04-03T13:43:57.332Z">
 <meta property="article:author" content="iNx">
 <meta property="article:tag" content="数学">
+<meta property="article:tag" content="ODE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/200402.jfif">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/2004031.jfif">
 
 
 
@@ -129,7 +130,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/200402.jfif" alt="取值范围">
+            <img class="thumbnail" src="/gallery/thumbnails/2004031.jfif" alt="ODE常微分方程的微分算子法（1）">
         </span>
     </div>
     
@@ -137,17 +138,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-02T08:55:22.000Z">2020-04-02</time>
+                <time class="level-item has-text-grey" datetime="2020-04-03T13:43:57.000Z">2020-04-03</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 198 个字)
+                    7 分钟 读完 (大约 1104 个字)
                 </span>
                 
                 
@@ -161,64 +162,205 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                取值范围
+                ODE常微分方程的微分算子法（1）
             
         </h1>
         <div class="content">
-            <h1>题目</h1>
-<p>函数 $f(x)=\sqrt{2x-x^2}+x$ 的值域为____．</p>
-<hr>
-<p>思考ing…</p>
-<hr>
+            <p>常微分方程的微分算子法</p>
 <a id="more"></a>
-<h1>分析与解答</h1>
-<h2 id="解法一-三角换元">解法一 三角换元</h2>
-<p>注意到<br>
+<h2 id="定义">定义</h2>
+<p>定义微分算子符号 $D^n=\frac{d^n}{dx^n}$，则二阶线性微分方程<br>
 $$<br>
-\sqrt{2x-x^2}=\sqrt{1-(x-1)^2}<br>
+y’’+Ay’+By=f(x)<br>
 $$<br>
-所以设 $x-1=\sin \alpha(\alpha\in[-\frac{\pi}{2},\frac{\pi}{2}])$，则 $f(x)=\cos\alpha+(1+\sin\alpha)$．于是</p>
+可以写成<br>
+$$<br>
+(D^2+AD+B)y=f(x)<br>
+$$<br>
+记多项式 $P(x)=x^2+Ax+B$，则又可以写成<br>
+$$<br>
+P(D)y=f(x)<br>
+$$</p>
+<h2 id="指数型">指数型</h2>
+<h3 id="代换法则">代换法则</h3>
+<h4 id="描述">描述</h4>
+<blockquote><p>$$<br>
+P(D)e^{\alpha x}=P(\alpha)e^{\alpha x}<br>
+$$<br>
+$\alpha$ 为复数．</p>
+</blockquote>
+<h4 id="证明">证明</h4>
+<p>显然等价于证明<br>
+$$<br>
+D^n e^{\alpha x}=\alpha^n e^{\alpha x}<br>
+$$<br>
+而这是显然的．</p>
+<h3 id="指数输入定理">指数输入定理</h3>
+<h4 id="描述-2">描述</h4>
+<blockquote><p>若 $P(D)y=e^{\alpha x}$，则<br>
+$$<br>
+y_p=\frac{e^{\alpha x}}{P(\alpha)}(while\ P(\alpha\neq0))<br>
+$$<br>
+其中 $y_p$ 表示一个特解．</p>
+</blockquote>
+<h4 id="证明-2">证明</h4>
+<p>只需讲 $y_p$ 代入验证是方程的解即可，由代换法则</p>
 
 $$
 \begin{align*}
-f(x)&=1+\sin\alpha+\cos\alpha\\
-&=1+\sqrt{2}\sin(\alpha+\frac{\pi}{4})\\
-&\in[0,\sqrt{2}+1]
+P(D)y_p=&P(D)\frac{e^{\alpha x}}{P(\alpha)}\\
+=&\frac{P(\alpha)e^{\alpha x}}{P(\alpha)}\\
+=&e^{\alpha x}
 \end{align*}
 $$
 
-
-<h2 id="解法二-柯西不等式">解法二 柯西不等式</h2>
-<p>因为<br>
+<p>证毕．</p>
+<h4 id="例题">例题</h4>
+<p>求微分方程<br>
 $$<br>
-1-(x-1)^2\geq0\Rightarrow x\in[0,2]<br>
+y’’-y’+2y=10e^{-x}\sin x<br>
 $$<br>
-所以 $f(x)\geq 0$，并且注意到，当 $x=0$ 时<br>
+解：</p>
+<p>先将方程<strong>复化</strong><br>
 $$<br>
-f(1)=0<br>
+(D^2-D+2)\tilde{y}=10e^{(-1+i)x}<br>
 $$<br>
-即 $f(x)$ 最小值为 $0$．</p>
-<p>另一方面，由柯西不等式</p>
+方程特解 $y_p$ 即为 $\tilde{y}_p$ 的虚部，由指数输入定理</p>
 
 $$
 \begin{align*}
-f(x)&=\sqrt{1-(x-1)^2}+x-1+1\\
-&\leq\sqrt{(1-(x-1)^2+(x-1)^2)(1+1)}+1\\
-&=\sqrt{2}+1
+\tilde y_p&=\frac{10e^{(-1+i)x}}{(-1+i)^2-(-1+i)+2}\\
+&=\frac{10e^{(-1+i)x}}{-2i+1-i+2}\\
+&=\frac{10e^{-x}(\cos x+i\sin x)}{3-3i}\\
+&=\frac{10}{6}(1+i)e^{-x}(\cos x+i\sin x)\\
 \end{align*}
 $$
 
+<p>因此，$y_p=$<br>
+$$<br>
+\frac{5}{3}e^{-x}(\sin x+\cos x)<br>
+$$<br>
+那么如果 $p(\alpha)=0$ 呢？</p>
+<h3 id="指数移位法则">指数移位法则</h3>
+<p>为与上面的情况区分，下面不再写 $\alpha$ 而是 $a$，但是 $a$ 仍然可以是复数．</p>
+<h4 id="描述-3">描述</h4>
+<blockquote><p>$$<br>
+P(D)e^{ax}u(x)=e^{ax}P(D+a)u(x)<br>
+$$</p>
+</blockquote>
+<h4 id="证明-3">证明</h4>
+<p>利用数学归纳法并且与代换法则相同，等价于证明单个算子的情况，即<br>
+$$<br>
+D^ne^{ax}u(x)=e^{ax}(D+a)^n u(x)<br>
+$$<br>
+在不引起歧义的前提下，下面将 $u(x)$ 写成 $u$ 而不影响理解．</p>
+<p>（1）当 $n=1$ 时<br>
+$$<br>
+D e^{ax}u=ae^{ax}u+e^{ax}Du=e^{ax}(D+a)u<br>
+$$<br>
+所以当 $n=1$ 时该法则正确．</p>
+<p>（2）当 $n=k-1$ 时成立</p>
 
-<h1>题外话</h1>
-<p>对于有根式和正常多项式的问题，三角和柯西不等式往往都能解决．可以权衡一下，找到更适合自己的方法．</p>
+$$
+\begin{align*}
+D^ke^{ax}u&=D(D^{k-1}e^{ax}u)\\
+&=D(e^{ax}(D+a)^{k-1}u)\\
+&=e^{ax}(D+a)^ku
+\end{align*}
+$$
+
+<p>证毕．</p>
+<h3 id="一般性结论">一般性结论</h3>
+<p>首先来看二阶微分方程．</p>
+<h4 id="单根">单根</h4>
+<p>若 $P(a)=0$ 且 $a$ 是单根，则有</p>
+<blockquote><p>$$<br>
+y_p=\frac{xe^{ax}}{P’(a)}<br>
+$$</p>
+</blockquote>
+<h4 id="证明-4">证明</h4>
+<p>因为 $a$ 是 $P(D)$ 的一个根，所以可以设<br>
+$$<br>
+P(D)=(D-a)(D-b) (a\neq b)<br>
+$$<br>
+因此<br>
+$$<br>
+P’(D)=D-a+D-b<br>
+$$<br>
+也即<br>
+$$<br>
+P’(a)=a-b<br>
+$$<br>
+代入以检验解 $y_p$ 的正确性<br>
+$$<br>
+P(D)\frac{e^{ax}x}{P’(a)}=\frac{e^{ax}(D-b-a)Dx}{P’(a)}=\frac{e^{ax}(a-b)}{(a-b)}=e^{ax}<br>
+$$<br>
+证毕．</p>
+<h4 id="二重根">二重根</h4>
+<p>若 $a$ 是二重根，则有</p>
+<blockquote><p>$$<br>
+y_p=\frac{x^2e^{ax}}{P’’(a)}<br>
+$$</p>
+</blockquote>
+<p>证明与前一种类似，设 $P(D)=(D-a)^2$ 进行检验即可．</p>
+<h4 id="例题-2">例题</h4>
+<p>求<br>
+$$<br>
+y’’-3y+2y=e^x<br>
+$$<br>
+的特解．</p>
+<p>解：<br>
+$$<br>
+P(D)=D^2-3D+2<br>
+$$<br>
+$a=1$ 是单根（一重根），所以<br>
+$$<br>
+y_p=\frac{xe^x}{P’(1)}=\frac{xe^{x}}{2-3}=-xe^x<br>
+$$</p>
+<h4 id="更一般方程和-n-重根">更一般方程和 $n$ 重根</h4>
+<p>由前面两个例子，其实可以猜出：</p>
+<p>当 $a$ 是 $n$ 重根时</p>
+<blockquote><p>$$<br>
+y_p=\frac{e^{ax}x^n}{P^{(n)}(a)}<br>
+$$</p>
+</blockquote>
+<p>其实将 $P(D)$ 理解为 $P^{(0)}(D)$，则上述结论为一般性结论，适用于任何情况．</p>
+<h4 id="证明-5">证明</h4>
+<p>和前面的思路其实类似，关键在于怎么表示 $P(D)$ 已提取对我们最有利的部分．</p>
+<p>设<br>
+$$<br>
+P(D)=(D-a)^n \tilde{P}(D)<br>
+$$<br>
+则<br>
+$$<br>
+P^{(n)}(D)=n!\tilde P(D)+(D-a)A(D)<br>
+$$<br>
+其中，$A(D)$ 是关于 $D$ 的多项式，可以看出来<br>
+$$<br>
+P^{(n)}(a)=n!\tilde P(a)<br>
+$$<br>
+将 $y_p$ 代入方程检验</p>
+
+$$
+\begin{align*}
+P(D)\frac{e^{ax}x^n}{P^{(n)(a)}}=&\frac{e^{ax}P(D+a)x^n}{P^{(n)}(a)}\\
+=&\frac{e^{ax}\tilde P(D+a)D^n x^n}{n! \tilde P(a)}\\
+=&\frac{e^{ax}\tilde P(D+a)\times n!}{n! \tilde P(a)}\\
+=&\frac{e^{ax}\tilde P(a)\times n!}{n! \tilde P(a)}\\
+=&e^{ax}
+\end{align*}
+$$
+
+<h3 id="结语">结语</h3>
+<p>在网上可以找到的算子法本就少之又少，大部分又只重结论，云里雾里，还需要多记很多麻烦的情况．例如三角函数，但是实际上只需要将三角函数复化就可以用指数的形式轻松解决，最后其实就只有一个公式．这次先谈到这，读者可以再多思考并做一些练习尝试，下次我再介绍 $f(x)$ 为多项式的情况．</p>
 
         </div>
         
                     <ul class="post-copyright">
-                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/">取值范围</a></li>
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/">ODE常微分方程的微分算子法（1）</a></li>
                     <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
-                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/">http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/</a></li>
-                    <li><strong>发布时间：</strong>2020-04-02</li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/">http://inxli.cn/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/</a></li>
+                    <li><strong>发布时间：</strong>2020-04-03</li>
                     <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                 </li>
                 </ul>
@@ -228,7 +370,7 @@ $$
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a>
+                    <a class="has-link-grey -link" href="/tags/ODE/" rel="tag">ODE</a>, <a class="has-link-grey -link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a>
                 </div>
             </div>
         </div>
@@ -278,17 +420,10 @@ $$
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">ODE常微分方程的微分算子法（1）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/%E6%95%B0%E5%AD%A6/%E6%A0%B9%E5%BC%8F%E6%9C%89%E7%90%86%E5%8C%96/">
-                <span class="level-item">根式有理化</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/%E7%BB%83%E4%B9%A0%E9%A2%98/%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/">
+                <span class="level-item">取值范围</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -445,26 +580,86 @@ $$
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#定义">
         <span class="has-mr-6">1</span>
-        <span>题目</span>
+        <span>定义</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#指数型">
         <span class="has-mr-6">2</span>
-        <span>分析与解答</span>
+        <span>指数型</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#解法一-三角换元">
+        <a class="is-flex" href="#代换法则">
         <span class="has-mr-6">2.1</span>
-        <span>解法一 三角换元</span>
+        <span>代换法则</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#描述">
+        <span class="has-mr-6">2.1.1</span>
+        <span>描述</span>
         </a></li><li>
-        <a class="is-flex" href="#解法二-柯西不等式">
-        <span class="has-mr-6">2.2</span>
-        <span>解法二 柯西不等式</span>
+        <a class="is-flex" href="#证明">
+        <span class="has-mr-6">2.1.2</span>
+        <span>证明</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">3</span>
-        <span>题外话</span>
-        </a></li></ul>
+        <a class="is-flex" href="#指数输入定理">
+        <span class="has-mr-6">2.2</span>
+        <span>指数输入定理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#描述-2">
+        <span class="has-mr-6">2.2.1</span>
+        <span>描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#证明-2">
+        <span class="has-mr-6">2.2.2</span>
+        <span>证明</span>
+        </a></li><li>
+        <a class="is-flex" href="#例题">
+        <span class="has-mr-6">2.2.3</span>
+        <span>例题</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#指数移位法则">
+        <span class="has-mr-6">2.3</span>
+        <span>指数移位法则</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#描述-3">
+        <span class="has-mr-6">2.3.1</span>
+        <span>描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#证明-3">
+        <span class="has-mr-6">2.3.2</span>
+        <span>证明</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#一般性结论">
+        <span class="has-mr-6">2.4</span>
+        <span>一般性结论</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#单根">
+        <span class="has-mr-6">2.4.1</span>
+        <span>单根</span>
+        </a></li><li>
+        <a class="is-flex" href="#证明-4">
+        <span class="has-mr-6">2.4.2</span>
+        <span>证明</span>
+        </a></li><li>
+        <a class="is-flex" href="#二重根">
+        <span class="has-mr-6">2.4.3</span>
+        <span>二重根</span>
+        </a></li><li>
+        <a class="is-flex" href="#例题-2">
+        <span class="has-mr-6">2.4.4</span>
+        <span>例题</span>
+        </a></li><li>
+        <a class="is-flex" href="#更一般方程和-n-重根">
+        <span class="has-mr-6">2.4.5</span>
+        <span>更一般方程和 $n$ 重根</span>
+        </a></li><li>
+        <a class="is-flex" href="#证明-5">
+        <span class="has-mr-6">2.4.6</span>
+        <span>证明</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#结语">
+        <span class="has-mr-6">2.5</span>
+        <span>结语</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
