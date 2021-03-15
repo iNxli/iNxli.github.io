@@ -7,23 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>KMP算法 - iNx</title>
+<title>数位DP - iNx</title>
 
 
-    <meta name="description" content="HDU 1711 Number Sequence Time Limit: 10000&#x2F;5000 MS (Java&#x2F;Others)  Memory Limit: 32768&#x2F;32768 K (Java&#x2F;Others) Total Submission(s): 57954  Accepted Submission(s): 23132">
+    <meta name="description" content="数位DP主要用于求解 $[a,b]$ (其中 $a,b$ 很大) 中满足某一类要求的数的个数, 也就是区间计数.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="KMP算法">
-<meta property="og:url" content="http://inxli.cn/%E5%AD%97%E7%AC%A6%E4%B8%B2/kmp%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="数位DP">
+<meta property="og:url" content="http://inxli.cn/DP/%E6%95%B0%E4%BD%8Ddp/index.html">
 <meta property="og:site_name" content="iNx">
-<meta property="og:description" content="HDU 1711 Number Sequence Time Limit: 10000&#x2F;5000 MS (Java&#x2F;Others)  Memory Limit: 32768&#x2F;32768 K (Java&#x2F;Others) Total Submission(s): 57954  Accepted Submission(s): 23132">
+<meta property="og:description" content="数位DP主要用于求解 $[a,b]$ (其中 $a,b$ 很大) 中满足某一类要求的数的个数, 也就是区间计数.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/2004041.jfif">
-<meta property="article:published_time" content="2020-04-04T13:42:37.000Z">
-<meta property="article:modified_time" content="2020-09-03T04:10:26.352Z">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
+<meta property="article:published_time" content="2021-03-15T11:48:39.000Z">
+<meta property="article:modified_time" content="2021-03-15T12:18:05.505Z">
 <meta property="article:author" content="iNx">
-<meta property="article:tag" content="KMP">
+<meta property="article:tag" content="数位DP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/2004041.jfif">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
 
 
 
@@ -132,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/2004041.jfif" alt="KMP算法">
+            <img class="thumbnail" src="/gallery/thumbnails/200401.png" alt="数位DP">
         </span>
     </div>
     
@@ -140,17 +140,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-04T13:42:37.000Z">2020-04-04</time>
+                <time class="level-item has-text-grey" datetime="2021-03-15T11:48:39.000Z">2021-03-15</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+                <a class="has-link-grey -link" href="/categories/DP/">DP</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 339 个字)
+                    6 分钟 读完 (大约 905 个字)
                 </span>
                 
                 
@@ -164,39 +164,46 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                KMP算法
+                数位DP
             
         </h1>
         <div class="content">
-            <h2 id="HDU-1711"><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1711">HDU 1711</a></h2>
-<h3><center>Number Sequence</center></h3>
-<center>Time Limit: 10000/5000 MS (Java/Others)  Memory Limit: 32768/32768 K (Java/Others)
-Total Submission(s): 57954  Accepted Submission(s): 23132</center>
+            <p>数位DP主要用于求解 $[a,b]$ (其中 $a,b$ 很大) 中满足某一类要求的数的个数, 也就是区间计数.</p>
 <a id="more"></a>
-<h4 id="Problem-Description">Problem Description</h4>
-<blockquote><p>Given two sequences of numbers : a[1], a[2], … , a[N], and b[1], b[2], … , b[M] (1 &lt;= M &lt;= 10000, 1 &lt;= N &lt;= 1000000). Your task is to find a number K which make a[K] = b[1], a[K + 1] = b[2], … , a[K + M - 1] = b[M]. If there are more than one K exist, output the smallest one.</p>
-</blockquote>
-<h4 id="Input">Input</h4>
-<blockquote><p>The first line of input is a number T which indicate the number of cases. Each case contains three lines. The first line is two numbers N and M (1 &lt;= M &lt;= 10000, 1 &lt;= N &lt;= 1000000). The second line contains N integers which indicate a[1], a[2], … , a[N]. The third line contains M integers which indicate b[1], b[2], … , b[M]. All integers are in the range of [-1000000, 1000000].</p>
-</blockquote>
-<h4 id="Output">Output</h4>
-<blockquote><p>For each test case, you should output one line which only contain K described above. If no such K exists, output -1 instead.</p>
-</blockquote>
-<h4 id="Sample-Input">Sample Input</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">13 5</span><br><span class="line">1 2 1 2 3 1 2 3 1 3 2 1 2</span><br><span class="line">1 2 3 1 3</span><br><span class="line">13 5</span><br><span class="line">1 2 1 2 3 1 2 3 1 3 2 1 2</span><br><span class="line">1 2 3 2 1</span><br></pre></td></tr></table></figure>
-<h4 id="Sample-Output">Sample Output</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">-1</span><br></pre></td></tr></table></figure>
-<h4 id="Source">Source</h4>
-<p><a href="http://acm.hdu.edu.cn/search.php?field=problem&amp;key=HDU+2007-Spring+Programming+Contest&amp;source=1&amp;searchmode=source">HDU 2007-Spring Programming Contest</a></p>
-<h2 id="代码">代码</h2>
-<figure class="highlight c"><figcaption><span>++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">namespace</span> iNx&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span> ;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">1e4</span> + <span class="number">10</span> ;</span><br><span class="line">    <span class="keyword">int</span> a[N],b[M],next[M];</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i,k;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b[i]);</span><br><span class="line">        next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">        i=<span class="number">0</span>;</span><br><span class="line">        k=<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;m<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(k==<span class="number">-1</span>||b[i]==b[k])&#123;</span><br><span class="line">                i++;</span><br><span class="line">                k++;</span><br><span class="line">                <span class="keyword">if</span>(b[i]!=b[k]) next[i]=k;</span><br><span class="line">                <span class="keyword">else</span> next[i]=next[k];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                k=next[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">        <span class="keyword">if</span>(n&lt;m)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n&amp;&amp;j&lt;m)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j==<span class="number">-1</span>||a[i]==b[j]) i++,j++;</span><br><span class="line">            <span class="keyword">else</span> j=next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(j==m)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i-j+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) iNx::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ABC-194-F-Digits-Paradise-in-Hexadecimal"><a href="https://atcoder.jp/contests/abc194/tasks/abc194_f">ABC#194.F Digits Paradise in Hexadecimal</a></h3>
+<h4 id="题目大意">题目大意</h4>
+<p>给定一个16进制正整数 $N(1\leq N&lt; 16^{2\times 10^5})$, 和一个10进制数 $K(1\leq K\leq 16)$, 求满足在区间 $[1, N]$ 中且各个数位数字种类个数为 $K$ 的16进制数的个数(不包括前导 $0$). 最后模一个数.</p>
+<h4 id="解题思路">解题思路</h4>
+<p>考虑数位DP: 用 $f(pos, t, state, limit)$ 来表示状态, 其中 $pos$ 表示取到第 $i$ 位, $t$ 表示当前位数中出现数的种类数, $state$ 是一个2进制数, 用来表示当前状态选择了哪些数字, $limit$ 用来表示当前状态是否与原数的前 $i$ 位完全一致. 于是有了 $dfs$ 的版本:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">2e5</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">char</span> s[MAX_N];</span><br><span class="line"><span class="keyword">int</span> d[MAX_N], dp[MAX_N][<span class="number">17</span>];</span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> pos, <span class="keyword">int</span> t, <span class="keyword">int</span> limit, <span class="keyword">int</span> state)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pos &gt;= n) <span class="keyword">return</span> (t == k);</span><br><span class="line">    <span class="keyword">if</span> (!limit &amp;&amp; (dp[pos][t] != <span class="number">-1</span>)) <span class="keyword">return</span> dp[pos][t];</span><br><span class="line">    <span class="keyword">int</span> mx = limit ? d[pos] : <span class="number">15</span>, res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= mx; ++j) &#123;</span><br><span class="line">        <span class="keyword">int</span> nstate = state;</span><br><span class="line">        <span class="keyword">if</span> (j || state) nstate |= (<span class="number">1</span> &lt;&lt; j);</span><br><span class="line">        res = (dfs(pos + <span class="number">1</span>, __builtin_popcount(nstate), limit &amp;&amp; (j == mx), nstate) + res) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> limit ? res : dp[pos][t] = res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s%lld"</span>, s, &amp;k);</span><br><span class="line">    n = <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] &gt;= <span class="string">'0'</span> &amp;&amp; s[i] &lt;= <span class="string">'9'</span>) d[i] = s[i] - <span class="string">'0'</span>;</span><br><span class="line">        <span class="keyword">else</span> d[i] = s[i] - <span class="string">'A'</span> + <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">-1</span>, <span class="keyword">sizeof</span> dp);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, dfs(<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外的话, 还可以考虑非递归的版本, 用 $f[i][j]$ 表示取了 $i$ 位且当前有 $j$ 种数字出现了, 并且还满足:</p>
+<ul>
+<li>取的数是严格小于原来的数 $N$ 的前 $i$ 位组成的数;</li>
+<li>非零.</li>
+</ul>
+<p>由此有递推公式, 首先由于前 $i$ 个数是严格小的, 于是新的一位可以随便填写之前出现过的 $j$ 种数字之一而转移到下一个状态 $f[i + 1][j]$, 或者同样的通过未出现过的 $(16-j)$ 种数字转移到 $f[i+1][j+1]$, 也即:<br>
+$$<br>
+f[i+1][j]+=f[i][j]*j<br>
+$$</p>
+<p>$$<br>
+f[i+1][j+1]+=f[i][j]*(16-j)<br>
+$$</p>
+<p>另外下一位不由上一位状态而来的可以是前面数字全为零, 而这时候只要随意添加一个非零数即可:<br>
+$$<br>
+f[i+1][1]+=15<br>
+$$<br>
+最后一种情况则为前 $i$ 位均与原数的前 $i$ 位相同, 那么这样的话下一位只能填 $0\ldots d[i]-1$, 其中 $d[i]$ 即为在原数 $N$ 中的下一位数. 并且这个时候很容易就可以统计出当前状态的各数位上不同数字的个数, 然后进行转移即可. 于是有如下递推代码:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">2e5</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">char</span> s[MAX_N];</span><br><span class="line"><span class="keyword">int</span> d[MAX_N], dp[MAX_N][<span class="number">17</span>];</span><br><span class="line"><span class="keyword">int</span> n, k, state;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s%lld"</span>, s, &amp;k);</span><br><span class="line">    n = <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] &gt;= <span class="string">'0'</span> &amp;&amp; s[i] &lt;= <span class="string">'9'</span>) d[i] = s[i] - <span class="string">'0'</span>;</span><br><span class="line">        <span class="keyword">else</span> d[i] = s[i] - <span class="string">'A'</span> + <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">            dp[i + <span class="number">1</span>][j] = (dp[i + <span class="number">1</span>][j] + dp[i][j] * j % MOD) % MOD;</span><br><span class="line">            dp[i + <span class="number">1</span>][j + <span class="number">1</span>] = (dp[i + <span class="number">1</span>][j + <span class="number">1</span>] + dp[i][j] * (<span class="number">16</span> - j) % MOD) % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (i) dp[i + <span class="number">1</span>][<span class="number">1</span>] = (dp[i + <span class="number">1</span>][<span class="number">1</span>] + <span class="number">15</span>) % MOD;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; d[i]; ++j) &#123;</span><br><span class="line">            <span class="keyword">int</span> nstate = state;</span><br><span class="line">            <span class="keyword">if</span> (i || j) nstate |= (<span class="number">1</span> &lt;&lt; j);</span><br><span class="line">            <span class="keyword">int</span> st = __builtin_popcount(nstate);</span><br><span class="line">            dp[i + <span class="number">1</span>][st] = (dp[i + <span class="number">1</span>][st] + <span class="number">1</span>) % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">        state |= (<span class="number">1</span> &lt;&lt; d[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> st = __builtin_popcount(state);</span><br><span class="line">    dp[n][st] = (dp[n][st] + <span class="number">1</span>) % MOD;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, dp[n][k]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="比较">比较</h4>
+<p>正常来说, 所谓 $dfs$ 版本其实就是记忆化搜索版本的动态规划, 理论上状态数会比较少(略去了无用的状态), 但是另一方面其常数会比较大. 一般情况(个人经验), $dfs$ 效率较优, 但是对于此题, 数位高达 $2e5$, 递归反而更慢, 采取递推方式较好.</p>
+
         </div>
         
                     <ul class="post-copyright">
-                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E5%AD%97%E7%AC%A6%E4%B8%B2/kmp%E7%AE%97%E6%B3%95/">KMP算法</a></li>
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/DP/%E6%95%B0%E4%BD%8Ddp/">数位DP</a></li>
                     <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
-                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E5%AD%97%E7%AC%A6%E4%B8%B2/kmp%E7%AE%97%E6%B3%95/">http://inxli.cn/%E5%AD%97%E7%AC%A6%E4%B8%B2/kmp%E7%AE%97%E6%B3%95/</a></li>
-                    <li><strong>发布时间：</strong>2020-04-04</li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/DP/%E6%95%B0%E4%BD%8Ddp/">http://inxli.cn/DP/%E6%95%B0%E4%BD%8Ddp/</a></li>
+                    <li><strong>发布时间：</strong>2021-03-15</li>
                     <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                 </li>
                 </ul>
@@ -206,7 +213,7 @@ Total Submission(s): 57954  Accepted Submission(s): 23132</center>
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/KMP/" rel="tag">KMP</a>
+                    <a class="has-link-grey -link" href="/tags/%E6%95%B0%E4%BD%8DDP/" rel="tag">数位DP</a>
                 </div>
             </div>
         </div>
@@ -256,17 +263,10 @@ Total Submission(s): 57954  Accepted Submission(s): 23132</center>
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/%E5%88%86%E5%9D%97/luogu-p2801-%E6%95%99%E4%B8%BB%E7%9A%84%E9%AD%94%E6%B3%95/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">luogu P2801 教主的魔法</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%89/">
-                <span class="level-item">简单的偏微分方程（练习题）</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/%E5%9B%BE%E8%AE%BA/tarjan%E7%AE%97%E6%B3%95%E6%B1%82scc-bcc/">
+                <span class="level-item">tarjan算法求SCC/BCC</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -423,42 +423,22 @@ Total Submission(s): 57954  Accepted Submission(s): 23132</center>
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#HDU-1711">
+        <a class="is-flex" href="#ABC-194-F-Digits-Paradise-in-Hexadecimal">
         <span class="has-mr-6">1</span>
-        <span>HDU 1711</span>
+        <span>ABC#194.F Digits Paradise in Hexadecimal</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#题目大意">
         <span class="has-mr-6">1.1</span>
-        <span>Number Sequence</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Problem-Description">
-        <span class="has-mr-6">1.1.1</span>
-        <span>Problem Description</span>
+        <span>题目大意</span>
         </a></li><li>
-        <a class="is-flex" href="#Input">
-        <span class="has-mr-6">1.1.2</span>
-        <span>Input</span>
+        <a class="is-flex" href="#解题思路">
+        <span class="has-mr-6">1.2</span>
+        <span>解题思路</span>
         </a></li><li>
-        <a class="is-flex" href="#Output">
-        <span class="has-mr-6">1.1.3</span>
-        <span>Output</span>
-        </a></li><li>
-        <a class="is-flex" href="#Sample-Input">
-        <span class="has-mr-6">1.1.4</span>
-        <span>Sample Input</span>
-        </a></li><li>
-        <a class="is-flex" href="#Sample-Output">
-        <span class="has-mr-6">1.1.5</span>
-        <span>Sample Output</span>
-        </a></li><li>
-        <a class="is-flex" href="#Source">
-        <span class="has-mr-6">1.1.6</span>
-        <span>Source</span>
-        </a></li></ul></li></ul></li><li>
-        <a class="is-flex" href="#代码">
-        <span class="has-mr-6">2</span>
-        <span>代码</span>
-        </a></li></ul>
+        <a class="is-flex" href="#比较">
+        <span class="has-mr-6">1.3</span>
+        <span>比较</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
