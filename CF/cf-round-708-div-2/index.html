@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>CF Round #708(Div.2) - iNx</title>
+
+
+    <meta name="description" content="很魔幻的一次 Div.2, 开局没多久CF就崩了, 后来unrated了. 数学场, 主要是一些构造, 贪心还有动态规划的题目. 比赛时候主要一直绕着 E2 在想, 后面 D 舍友想了暴力贪心的做法, 写了半天… 最后好像假了:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF Round #708(Div.2)">
+<meta property="og:url" content="http://inxli.cn/CF/cf-round-708-div-2/index.html">
+<meta property="og:site_name" content="iNx">
+<meta property="og:description" content="很魔幻的一次 Div.2, 开局没多久CF就崩了, 后来unrated了. 数学场, 主要是一些构造, 贪心还有动态规划的题目. 比赛时候主要一直绕着 E2 在想, 后面 D 舍友想了暴力贪心的做法, 写了半天… 最后好像假了:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
+<meta property="article:published_time" content="2021-03-18T06:37:30.000Z">
+<meta property="article:modified_time" content="2021-03-18T07:27:36.888Z">
+<meta property="article:author" content="iNx">
+<meta property="article:tag" content="CF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/tinx.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<!-- <body class="is-2-column"> -->
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                iNx
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnails/200401.png" alt="CF Round #708(Div.2)">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-03-18T06:37:30.000Z">2021-03-18</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CF/">CF</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1768 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                CF Round #708(Div.2)
+            
+        </h1>
+        <div class="content">
+            <p>很魔幻的一次 Div.2, 开局没多久CF就崩了, 后来unrated了. 数学场, 主要是一些构造, 贪心还有动态规划的题目. 比赛时候主要一直绕着 E2 在想, 后面 D 舍友想了暴力贪心的做法, 写了半天… 最后好像假了:</p>
+<a id="more"></a>
+<p>舍友: 你要 AC 了.</p>
+<p>Wrong answer on test 1…</p>
+<p>舍友: 你不可能 TLE.</p>
+<p>Time limit exceeded on test 2…</p>
+<h3 id="A-Meximization">A. Meximization</h3>
+<h4 id="Problem">Problem</h4>
+<p>对给定序列 $a$ 进行重排成 $b$, 使得<br>
+$$<br>
+\sum_{i = 1}^{n}mex(b_1,b_2,\ldots,b_i)<br>
+$$<br>
+最大. ( $t(1\leq t\leq 100)$ 组数据, $n\leq 100$. )</p>
+<h4 id="Solution">Solution</h4>
+<p>由于 $mex(b_1,\ldots, b_i)$ 不减, 所以就是从小到大输出, 相同的数多余的排到后面即可. 时间复杂度: $O(tn\log n)$</p>
+<h3 id="B-M-arrays">B. M-arrays</h3>
+<h4 id="Problem-2">Problem</h4>
+<p>对给定序列 $a$ 进行重排并分为多个连续段, 使得每个段中相邻两数之和必须被给定数 $m(1\leq m\leq 10^5)$ 整除, 求段数的最小值. (多组数据, $\sum{n}\leq 10^5$)</p>
+<h4 id="Solution-2">Solution</h4>
+<p>对模 $m$ 的完全剩余系简单讨论计算.</p>
+<h3 id="C1-k-LCM-easy-version">C1. k-LCM (easy version)</h3>
+<h4 id="Problem-3">Problem</h4>
+<p>对给定的 $n(3\leq n\leq 10^9)$, 输出三个数 $a_1,a_2,a_3$ 满足:<br>
+$$<br>
+a_1+a_2+a_3=n<br>
+$$</p>
+<p>$$<br>
+LCM(a_1,a_2,a_3)\leq \frac{n}{2}<br>
+$$</p>
+<p>$t$ 组数据. ($t\leq 10^4$)</p>
+<h4 id="Solution-3">Solution</h4>
+<p>若为奇数, 输出 $1, (n-1)/2, (n-1)/2$;</p>
+<p>若为偶数:</p>
+<ul>
+<li>若 $n/2$ 仍为偶数, 输出 $n/2, n/4, n/4$;</li>
+<li>否则输出 $2, (n-2)/2, (n-2)/2$.</li>
+</ul>
+<h3 id="C2-k-LCM-hard-version">C2. k-LCM (hard version)</h3>
+<h4 id="Problem-4">Problem</h4>
+<p>和 C1 几乎一致, 只是要输出 $k$ 个数而不是 $3$ 个.</p>
+<h4 id="Solution-4">Solution</h4>
+<p>先输出 $(k-3)$ 个 $1$, 化为上一种情况.</p>
+<h3 id="D-Genius">D. Genius</h3>
+<h4 id="Problem-5">Problem</h4>
+<p><strong>Please note the non-standard memory limit.</strong></p>
+<p>There are $n$ problems numbered with integers from $1$ to $n$. $i$-th problem has the complexity $c_i=2^i$, tag $tag_i$ and score $s_i$.</p>
+<p>After solving the problem $i$ it’s allowed to solve problem $j$ if and only if $IQ&lt;|c_i−c_j|$ and $tag_i≠tag_j$. After solving it your $IQ$ changes and becomes $IQ=|c_i−c_j|$ and you gain $|s_i−s_j|$ points.</p>
+<p>Any problem can be the first. You can solve problems in any order and as many times as you want.</p>
+<p>Initially your $IQ=0$. Find the maximum number of points that can be earned.</p>
+<p><strong>Input</strong></p>
+<p>The first line contains a single integer $t (1≤t≤100)$ — the number of test cases.</p>
+<p>The first line of each test case contains an integer $n (1≤n≤5000)$ — the number of problems.</p>
+<p>The second line of each test case contains $n$ integers $tag_1,tag_2,…,tag_n$ $(1≤tag_i≤n)$ — tags of the problems.</p>
+<p>The third line of each test case contains $n$ integers $s_1,s_2,…,s_n$ $(1≤si≤10^9)$ — scores of the problems.</p>
+<p>It’s guaranteed that sum of $n$ over all test cases does not exceed $5000$.</p>
+<p><strong>Output</strong></p>
+<p>For each test case print a single integer  — the maximum number of points that can be earned.</p>
+<h4 id="Solution-5">Solution</h4>
+<p>注意到任何两个 $2$ 的幂次数相减不可能相同, 并且被减数越大值越大. 考虑动态规划, 用 $dp[i]$ 表示最后以 $i$ 问题结尾能获得的最大价值. 那么 $i: 1\ldots n$, 而后遍历 $j:i-1\ldots 1$, 转移: 一个是 $i$ 可以由 $j$ 转移, 另外 $j$ 可以由 $i$ 转移. 而以这个顺序进行就会使得 $\vert c^i-c^j\vert$  递增, 就是 $IQ$ 是递增的. 时间复杂度: $O(n^2)$.</p>
+<h4 id="Code">Code</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">5e3</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> dp[MAX_N], tag[MAX_N], s[MAX_N];</span><br><span class="line"><span class="keyword">int</span> T, n, ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, tag + i);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, s + i);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) dp[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt; <span class="number">0</span>; --j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tag[i] == tag[j]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">int</span> dpi = dp[i], dpj = dp[j], v = <span class="built_in">abs</span>(s[i] - s[j]);</span><br><span class="line">                dp[i] = <span class="built_in">max</span>(dp[i], dpj + v);</span><br><span class="line">                dp[j] = <span class="built_in">max</span>(dp[j], dpi + v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = dp[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) ans = <span class="built_in">max</span>(ans, dp[i]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="E1-Square-free-division-easy-version">E1. Square-free division (easy version)</h3>
+<h4 id="Problem-6">Problem</h4>
+<p><strong>This is the easy version of the problem. The only difference is that in this version k=0k=0.</strong></p>
+<p>There is an array $a_1,a_2,…,a_n$ of $n$ positive integers. You should divide it into a minimal number of continuous segments, such that in each segment there are no two numbers (on different positions), whose product is a perfect square.</p>
+<p>Moreover, it is allowed to do at most kk such operations before the division: choose a number in the array and change its value to any positive integer. But in this version $k=0$, so it is not important.</p>
+<p>What is the minimum number of continuous segments you should use if you will make changes optimally?</p>
+<p><strong>Input</strong></p>
+<p>The first line contains a single integer $t (1≤t≤1000)$ — the number of test cases.</p>
+<p>The first line of each test case contains two integers $n, k (1≤n≤2\times 10^5, k=0)$.</p>
+<p>The second line of each test case contains $n$ integers $a_1,a_2,…,a_n (1≤a_i≤10^7)$.</p>
+<p>It’s guaranteed that the sum of $n$ over all test cases does not exceed $2\times 10^5$.</p>
+<p><strong>Output</strong></p>
+<p>For each test case print a single integer  — the answer to the problem.</p>
+<h4 id="Solution-6">Solution</h4>
+<p>贪心策略, 首先预处理所有 $\sqrt{1e7}$ 下的素数, 然后暴力质因数分解, 将素数因子的幂次为奇数的留下, 对于每个质因数可能和后面某个数相乘得到完全平方数就是后面某个数得到的素数因子序列和它相同. 暴力把素数扔进vector再套一个map. 复杂度大概为 $O(\frac{n\sqrt{a_{max}}}{\log n}\sigma{(a)}\log n)$, 理论上不是很优秀, 但是实际跑得很快, 可能是没人卡吧.</p>
+<p>另外其实可以直接把某个 $a$ 直接分解成 $A^2 B$, 其中 $B$ 不再有平方因子, 那么就是找后面哪个数也可以分解出一样的 $B$, 然后就要划分一次. 这样的复杂度大概是 $O(n)$ 的.</p>
+<h4 id="Code-2">Code</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">2e5</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_M = <span class="number">1e7</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_P = <span class="number">1e6</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> pri[MAX_P];</span><br><span class="line"><span class="keyword">int</span> vis[MAX_M];</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, <span class="keyword">bool</span>&gt; mp;</span><br><span class="line"><span class="keyword">int</span> T, n, cnt, ans, k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Euler</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i]) &#123;</span><br><span class="line">            pri[++cnt] = i;</span><br><span class="line">            vis[i] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; i * pri[j] &lt;= n; ++j) &#123;</span><br><span class="line">            vis[i * pri[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % pri[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">brute_force</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = n, i;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nst;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; pri[i] * pri[i] &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x % pri[i] == <span class="number">0</span>) x /= pri[i], ++tot;</span><br><span class="line">        <span class="keyword">if</span> (tot &amp; <span class="number">1</span>) &#123;</span><br><span class="line">            nst.push_back(pri[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">1</span>) nst.push_back(x);</span><br><span class="line">    <span class="keyword">if</span> (mp[nst]) &#123;</span><br><span class="line">        ++ans;</span><br><span class="line">        mp.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    mp[nst] = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Euler(<span class="number">1e4</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;n, &amp;k);</span><br><span class="line">        mp.<span class="built_in">clear</span>();</span><br><span class="line">        ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> a;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;a);</span><br><span class="line">            brute_force(a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="E2-square-free-division-hard-version">E2. square-free division (hard version)</h3>
+<h4 id="Problem-7">Problem</h4>
+<p>$0\leq k\leq 20$.</p>
+<h4 id="Solution-7">Solution</h4>
+<p>考虑动态规划, 用 $dp[i][j]$ 表示 $1\ldots i$ 使用 $j$ 次变色最小分段数. 那么转移就是应该是利用 $t$ 次变色机会将 $l\ldots i$ 变为一段进行转移. 所以我们需要预处理利用 $t$ 次机会将 $l\ldots i$ 变为一段的 $l$, 并且尽可能最小化 $l$. 容易发现 $l$ 关于 $i$ 单调. 故利用双指针方法预处理 $O(nk)$, 总时间复杂度为 $O(nk^2)$.</p>
+<h4 id="Code-3">Code</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">2e5</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_M = <span class="number">1e7</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> a[MAX_N], b[MAX_M], lft[MAX_N][<span class="number">23</span>], dp[MAX_N][<span class="number">23</span>];</span><br><span class="line"><span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; cnt;</span><br><span class="line"><span class="keyword">int</span> T, n, k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i * i &lt;= <span class="number">1e7</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j * i * i &lt;= <span class="number">1e7</span>; ++j) &#123;</span><br><span class="line">            b[j * i * i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;k);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i), a[i] = b[a[i]];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">                dp[i][j] = n + <span class="number">1</span>;</span><br><span class="line">                lft[i][j] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">            <span class="keyword">int</span> l = <span class="number">1</span>, now = <span class="number">0</span>;</span><br><span class="line">            cnt.<span class="built_in">clear</span>();</span><br><span class="line">            ++cnt[a[l]];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (cnt[a[i]] &gt; <span class="number">0</span>) ++now;</span><br><span class="line">                ++cnt[a[i]];</span><br><span class="line">                <span class="keyword">while</span> (now &gt; j) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (cnt[a[l]] &gt; <span class="number">1</span>) --now;</span><br><span class="line">                    --cnt[a[l]];</span><br><span class="line">                    ++l;</span><br><span class="line">                &#125;</span><br><span class="line">                lft[i][j] = l;</span><br><span class="line">                <span class="comment">// printf("lft[%d][%d]: %d\n", i, j, lft[i][j]);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">0</span>; t &lt;= j; ++t) &#123;</span><br><span class="line">                    <span class="keyword">int</span> l = lft[i][t];</span><br><span class="line">                    dp[i][j] = <span class="built_in">min</span>(dp[i][j], dp[l - <span class="number">1</span>][j - t] + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[n][k]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+                    <ul class="post-copyright">
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/CF/cf-round-708-div-2/">CF Round #708(Div.2)</a></li>
+                    <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/CF/cf-round-708-div-2/">http://inxli.cn/CF/cf-round-708-div-2/</a></li>
+                    <li><strong>发布时间：</strong>2021-03-18</li>
+                    <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+                </li>
+                </ul>
+            
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/CF/" rel="tag">CF</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/gallery/donate/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/gallery/donate/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/DP/%E6%95%B0%E4%BD%8Ddp/">
+                <span class="level-item">数位DP</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'wgDHmj0hwwDe8edfQq0VI9Uy-gzGzoHsz',
+        app_key: 'HgaMhL7cgcYqdaIXtfFm6D4p',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="iNx">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        iNx
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        MO &amp; OI
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            10
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            9
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1261751598&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener">
+                QQ和我联系</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/iNxli">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="QQ邮箱" href="mailto:1261751598@qq.com">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="gmail" href="mailto:sjsinx@gmail.com">
+                
+                <i class="fab fa-google"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="知乎" href="https://www.zhihu.com/people/inx-37">
+                
+                <i class="fab fa-zhihu"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#A-Meximization">
+        <span class="has-mr-6">1</span>
+        <span>A. Meximization</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem">
+        <span class="has-mr-6">1.1</span>
+        <span>Problem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution">
+        <span class="has-mr-6">1.2</span>
+        <span>Solution</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#B-M-arrays">
+        <span class="has-mr-6">2</span>
+        <span>B. M-arrays</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem-2">
+        <span class="has-mr-6">2.1</span>
+        <span>Problem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-2">
+        <span class="has-mr-6">2.2</span>
+        <span>Solution</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C1-k-LCM-easy-version">
+        <span class="has-mr-6">3</span>
+        <span>C1. k-LCM (easy version)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem-3">
+        <span class="has-mr-6">3.1</span>
+        <span>Problem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-3">
+        <span class="has-mr-6">3.2</span>
+        <span>Solution</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C2-k-LCM-hard-version">
+        <span class="has-mr-6">4</span>
+        <span>C2. k-LCM (hard version)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem-4">
+        <span class="has-mr-6">4.1</span>
+        <span>Problem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-4">
+        <span class="has-mr-6">4.2</span>
+        <span>Solution</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#D-Genius">
+        <span class="has-mr-6">5</span>
+        <span>D. Genius</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem-5">
+        <span class="has-mr-6">5.1</span>
+        <span>Problem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-5">
+        <span class="has-mr-6">5.2</span>
+        <span>Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code">
+        <span class="has-mr-6">5.3</span>
+        <span>Code</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#E1-Square-free-division-easy-version">
+        <span class="has-mr-6">6</span>
+        <span>E1. Square-free division (easy version)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem-6">
+        <span class="has-mr-6">6.1</span>
+        <span>Problem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-6">
+        <span class="has-mr-6">6.2</span>
+        <span>Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code-2">
+        <span class="has-mr-6">6.3</span>
+        <span>Code</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#E2-square-free-division-hard-version">
+        <span class="has-mr-6">7</span>
+        <span>E2. square-free division (hard version)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem-7">
+        <span class="has-mr-6">7.1</span>
+        <span>Problem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-7">
+        <span class="has-mr-6">7.2</span>
+        <span>Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code-3">
+        <span class="has-mr-6">7.3</span>
+        <span>Code</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    iNx
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 iNx&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://iNxli.cn',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
