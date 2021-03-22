@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>ARC #115 - iNx</title>
+
+
+    <meta name="description" content="觉得很有意思的一场ARC, 虽然本菜鸡只写出了3个题…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARC #115">
+<meta property="og:url" content="http://inxli.cn/Atcoder/arc-115/index.html">
+<meta property="og:site_name" content="iNx">
+<meta property="og:description" content="觉得很有意思的一场ARC, 虽然本菜鸡只写出了3个题…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
+<meta property="article:published_time" content="2021-03-22T08:11:07.000Z">
+<meta property="article:modified_time" content="2021-03-22T08:41:03.375Z">
+<meta property="article:author" content="iNx">
+<meta property="article:tag" content="Atcoder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/tinx.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<!-- <body class="is-2-column"> -->
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                iNx
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnails/200401.png" alt="ARC #115">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-03-22T08:11:07.000Z">2021-03-22</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Atcoder/">Atcoder</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1082 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                ARC #115
+            
+        </h1>
+        <div class="content">
+            <p>觉得很有意思的一场ARC, 虽然本菜鸡只写出了3个题…</p>
+<a id="more"></a>
+<h2 id="A-Two-Choices">A. Two Choices</h2>
+<h3 id="Problem-Statement">Problem Statement</h3>
+<p>$N$ students took a test with $M$ questions with two choices: $0$ and $1$. You are given $N$ strings of length $M$ each: $S_1,S_2,…,S_N$. The $k$-th character of $S_i$ is <code>0</code> or <code>1</code>, representing the response of the $i$-th student to the $k$-th question. Although we know the response of each student to each question, we do not yet know the correct answer ― $0$ or $1$ ― to each problem. Find the number of pairs $(i,j)$ satisfying $1≤i&lt;j≤N$ such that it is impossible for Student $i$ and Student $j$ to have the same number of correct answers.</p>
+<h3 id="Constraints">Constraints</h3>
+<ul>
+<li>$2\leq N\leq 10^5$</li>
+<li>$1\leq M \leq 20$</li>
+<li>$S_i$ is a string of length $M$ consisting of <code>0</code> and <code>1</code></li>
+</ul>
+<h3 id="Solution">Solution</h3>
+<p>容易发现如果两个人对的题数一定不同的话等价于恰好有奇数位数字不同. 再进一步可以发现, 任意交换 <code>0</code> 和<code>1</code> , 不同题数的奇偶性不会改变, 所以就是统计奇数个 <code>1</code> 和偶数个 <code>1</code> 的各有多少个, 然后相乘即可.</p>
+<h3 id="Code">Code</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_M = <span class="number">27</span>;</span><br><span class="line"><span class="keyword">char</span> s[MAX_M];</span><br><span class="line"><span class="keyword">int</span> n, m, cnt_odd;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++j) <span class="keyword">if</span> (s[j] == <span class="string">'1'</span>) ++cnt;</span><br><span class="line">        <span class="keyword">if</span> (cnt &amp; <span class="number">1</span>) ++cnt_odd;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, cnt_odd * (n - cnt_odd));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="B-Plus-Matrix">B. Plus Matrix</h2>
+<h3 id="Problem-Statement-2">Problem Statement</h3>
+<p>Given is an $N×N$ matrix $C$ whose elements are non-negative integers. Determine whether there is a pair of sequences of non-negative integers $A_1,A_2,…,A_N$ and $B_1,B_2,…,B_N$ such that $C_{i,j}=A_i+B_j$ for every $(i,j)$. If the answer is yes, print one such pair.</p>
+<h3 id="Constraints-2">Constraints</h3>
+<ul>
+<li>$1\leq N\leq 500$</li>
+<li>$0\leq C_{i,j}\leq 10^9$</li>
+</ul>
+<h3 id="Solution-2">Solution</h3>
+<p>可以发现任一行任意列相邻差相同, 由此判断然后随便乱构造即可.</p>
+<h2 id="C-mathbb-N-Coloring">C. $\mathbb{N}$ Coloring</h2>
+<h3 id="Problem-Statements">Problem Statements</h3>
+<p>Given is an integer $N$. Among the sequences of $N$ positive integers $A_1,A_2,…,A_N$ satisfying the following condition, print one that minimizes the maximum value in the sequence.</p>
+<ul>
+<li>If $i$ divides $j$, $A_i≠A_j (1≤i&lt;j≤N)$.</li>
+</ul>
+<h3 id="Constraints-3">Constraints</h3>
+<ul>
+<li>$1\leq N\leq 10^5$</li>
+</ul>
+<h3 id="Solution-3">Solution</h3>
+<p>利用数学归纳法可以证明 $A_i = \Omega(i) + 1$. 其中<br>
+$$<br>
+\Omega(i) = \alpha_1+\alpha_2+\ldots+\alpha_k<br>
+$$</p>
+<p>$$<br>
+i=p_1^{\alpha_1}p_2^{\alpha_2}\ldots p^{\alpha_k}<br>
+$$</p>
+<h3 id="Code-2">Code</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">1e5</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mx_pos</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = a, res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= x; ++i) &#123;</span><br><span class="line">        <span class="keyword">while</span> (x % i == <span class="number">0</span>) ++res, x /= i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">1</span>) ++res;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, mx_pos(i) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="D-Odd-Degree">D. Odd Degree</h2>
+<h3 id="Problem-Statements-2">Problem Statements</h3>
+<p>Given is a simple undirected graph with $N$ vertices and $M$ edges, where the vertices are numbered $1,…,N$ and the $i$-th edge connects Vertex $A_i$ and Vertex $B_i$. For each $K(0≤K≤N)$, find the number of spanning subgraphs (※) with exactly $K$ vertices with odd degrees. Since the answers can be enormous, print it modulo $998244353$.</p>
+<p>(※) A subgraph $H$ of $G$ is said to be a spanning subgraph of $G$ when the vertex set of $H$ equals the vertex set of $G$ and the edge set of $H$ is a subset of the edge set of $G$.</p>
+<h3 id="Constraints-4">Constraints</h3>
+<ul>
+<li>$1\leq N\leq 5000$</li>
+<li>$0\leq M\leq 5000$</li>
+<li>$1\leq A_i,B_i\leq N$</li>
+<li>The given graph is simple, that is, it contains no self-loops and no multi-edges.</li>
+</ul>
+<h3 id="Solution-4">Solution</h3>
+<ul>
+<li>考虑图为一棵树的情况, 可以证明对任选的 $k$ 个固定点, 当 $k$ 为奇数时, 显然不可能存在只有 $k$ 个点的度数为奇数的情况, 这与欧拉握手定理相悖; 当 $k$ 为偶数时, 将存在唯一的子图使得这 $k$ 个点的度数恰好为奇数. 可以利用数学归纳法证明, 通过任选一个叶子结点, 进行讨论.</li>
+<li>考虑连通图, 先任选棵图的生成树. 而其他的边不管加不加入, 其只会改变这 $k$ 个点的度数, 进而知道新的哪些具体的点度数为奇数, 并且不会改变奇度点的奇偶性. 故情况数为 $2^{m-n+1}C_{n}^{k}$.</li>
+<li>最后对于多个连通图, 利用卷积计算总答案. 若不使用<strong>快速傅里叶变换</strong>的复杂度为 $O(n^2)$.</li>
+</ul>
+<h3 id="Code-3">Code</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">5e3</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">int</span> dp[MAX_N &lt;&lt; <span class="number">1</span>], f[MAX_N], siz_v[MAX_N], siz_e[MAX_N], tmp[MAX_N &lt;&lt; <span class="number">1</span>], tdp[MAX_N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> fac[MAX_N], inv_fac[MAX_N];</span><br><span class="line"><span class="keyword">int</span> n, m, lst;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> x == f[x] ? x : f[x] = <span class="built_in">find</span>(f[x]); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f_pow</span><span class="params">(<span class="keyword">int</span> base, <span class="keyword">int</span> b, <span class="keyword">int</span> mod = MOD)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) res = res * base % MOD;</span><br><span class="line">        base = base * base % MOD;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (m &gt; n || m &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> fac[n] * inv_fac[m] % MOD * inv_fac[n - m] % MOD;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) f[i] = i, siz_v[i] = <span class="number">1</span>;</span><br><span class="line">    fac[<span class="number">0</span>] = <span class="number">1</span>, dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) fac[i] = fac[i - <span class="number">1</span>] * i % MOD;</span><br><span class="line">    inv_fac[n] = f_pow(fac[n], MOD - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) inv_fac[i] = inv_fac[i + <span class="number">1</span>] * (i + <span class="number">1</span>) % MOD;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;u, &amp;v);</span><br><span class="line">        <span class="keyword">int</span> x = <span class="built_in">find</span>(u), y = <span class="built_in">find</span>(v);</span><br><span class="line">        <span class="keyword">if</span> (siz_v[x] &gt; siz_v[y]) swap(x, y);</span><br><span class="line">        <span class="keyword">if</span> (x != y) f[x] = y, siz_v[y] += siz_v[x], siz_e[y] += siz_e[x];</span><br><span class="line">        ++siz_e[y];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="built_in">find</span>(i)) &#123;</span><br><span class="line">            <span class="keyword">int</span> e = siz_e[i], v = siz_v[i];</span><br><span class="line">            <span class="comment">// printf("%lld %lld\n", e, v);</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= v; ++k) &#123;</span><br><span class="line">                <span class="keyword">if</span> (k &amp; <span class="number">1</span>) &#123; </span><br><span class="line">                    tmp[k] = <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    tmp[k] = f_pow(<span class="number">2</span>, e - v + <span class="number">1</span>) * C(v, k) % MOD;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// for (int j = 0; j &lt;= v; ++j) printf("%lld ", tmp[j]);</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= lst; ++j) &#123;</span><br><span class="line">                tdp[j] = dp[j];</span><br><span class="line">                dp[j] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= lst; ++j) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= v; ++k) &#123;</span><br><span class="line">                    dp[j + k] = (dp[j + k] + tdp[j] * tmp[k] % MOD) % MOD;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            lst += v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= n; ++k) <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, dp[k]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="E-LEQ-and-NEQ">E. LEQ and NEQ</h2>
+<p>还不会… 先咕…</p>
+<h2 id="F-Migration">F. Migration</h2>
+<p>没看…</p>
+
+        </div>
+        
+                    <ul class="post-copyright">
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/Atcoder/arc-115/">ARC #115</a></li>
+                    <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/Atcoder/arc-115/">http://inxli.cn/Atcoder/arc-115/</a></li>
+                    <li><strong>发布时间：</strong>2021-03-22</li>
+                    <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+                </li>
+                </ul>
+            
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Atcoder/" rel="tag">Atcoder</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/gallery/donate/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/gallery/donate/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/CF/cf-round-708-div-2/">
+                <span class="level-item">CF Round #708(Div.2)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'wgDHmj0hwwDe8edfQq0VI9Uy-gzGzoHsz',
+        app_key: 'HgaMhL7cgcYqdaIXtfFm6D4p',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="iNx">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        iNx
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        MO &amp; OI
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            11
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            8
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            10
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1261751598&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener">
+                QQ和我联系</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/iNxli">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="QQ邮箱" href="mailto:1261751598@qq.com">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="gmail" href="mailto:sjsinx@gmail.com">
+                
+                <i class="fab fa-google"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="知乎" href="https://www.zhihu.com/people/inx-37">
+                
+                <i class="fab fa-zhihu"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#A-Two-Choices">
+        <span class="has-mr-6">1</span>
+        <span>A. Two Choices</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem-Statement">
+        <span class="has-mr-6">1.1</span>
+        <span>Problem Statement</span>
+        </a></li><li>
+        <a class="is-flex" href="#Constraints">
+        <span class="has-mr-6">1.2</span>
+        <span>Constraints</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution">
+        <span class="has-mr-6">1.3</span>
+        <span>Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code">
+        <span class="has-mr-6">1.4</span>
+        <span>Code</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#B-Plus-Matrix">
+        <span class="has-mr-6">2</span>
+        <span>B. Plus Matrix</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem-Statement-2">
+        <span class="has-mr-6">2.1</span>
+        <span>Problem Statement</span>
+        </a></li><li>
+        <a class="is-flex" href="#Constraints-2">
+        <span class="has-mr-6">2.2</span>
+        <span>Constraints</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-2">
+        <span class="has-mr-6">2.3</span>
+        <span>Solution</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-mathbb-N-Coloring">
+        <span class="has-mr-6">3</span>
+        <span>C. $\mathbb{N}$ Coloring</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem-Statements">
+        <span class="has-mr-6">3.1</span>
+        <span>Problem Statements</span>
+        </a></li><li>
+        <a class="is-flex" href="#Constraints-3">
+        <span class="has-mr-6">3.2</span>
+        <span>Constraints</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-3">
+        <span class="has-mr-6">3.3</span>
+        <span>Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code-2">
+        <span class="has-mr-6">3.4</span>
+        <span>Code</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#D-Odd-Degree">
+        <span class="has-mr-6">4</span>
+        <span>D. Odd Degree</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem-Statements-2">
+        <span class="has-mr-6">4.1</span>
+        <span>Problem Statements</span>
+        </a></li><li>
+        <a class="is-flex" href="#Constraints-4">
+        <span class="has-mr-6">4.2</span>
+        <span>Constraints</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-4">
+        <span class="has-mr-6">4.3</span>
+        <span>Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code-3">
+        <span class="has-mr-6">4.4</span>
+        <span>Code</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#E-LEQ-and-NEQ">
+        <span class="has-mr-6">5</span>
+        <span>E. LEQ and NEQ</span>
+        </a></li><li>
+        <a class="is-flex" href="#F-Migration">
+        <span class="has-mr-6">6</span>
+        <span>F. Migration</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    iNx
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 iNx&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://iNxli.cn',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

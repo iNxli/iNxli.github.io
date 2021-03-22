@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
 <meta property="article:published_time" content="2021-03-18T06:37:30.000Z">
-<meta property="article:modified_time" content="2021-03-18T07:27:36.888Z">
+<meta property="article:modified_time" content="2021-03-22T08:44:09.692Z">
 <meta property="article:author" content="iNx">
 <meta property="article:tag" content="CF">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分钟 读完 (大约 1768 个字)
+                    12 分钟 读完 (大约 1767 个字)
                 </span>
                 
                 
@@ -174,22 +174,22 @@
 <p>Wrong answer on test 1…</p>
 <p>舍友: 你不可能 TLE.</p>
 <p>Time limit exceeded on test 2…</p>
-<h3 id="A-Meximization">A. Meximization</h3>
-<h4 id="Problem">Problem</h4>
+<h2 id="A-Meximization">A. Meximization</h2>
+<h3 id="Problem">Problem</h3>
 <p>对给定序列 $a$ 进行重排成 $b$, 使得<br>
 $$<br>
 \sum_{i = 1}^{n}mex(b_1,b_2,\ldots,b_i)<br>
 $$<br>
 最大. ( $t(1\leq t\leq 100)$ 组数据, $n\leq 100$. )</p>
-<h4 id="Solution">Solution</h4>
+<h3 id="Solution">Solution</h3>
 <p>由于 $mex(b_1,\ldots, b_i)$ 不减, 所以就是从小到大输出, 相同的数多余的排到后面即可. 时间复杂度: $O(tn\log n)$</p>
-<h3 id="B-M-arrays">B. M-arrays</h3>
-<h4 id="Problem-2">Problem</h4>
+<h2 id="B-M-arrays">B. M-arrays</h2>
+<h3 id="Problem-2">Problem</h3>
 <p>对给定序列 $a$ 进行重排并分为多个连续段, 使得每个段中相邻两数之和必须被给定数 $m(1\leq m\leq 10^5)$ 整除, 求段数的最小值. (多组数据, $\sum{n}\leq 10^5$)</p>
-<h4 id="Solution-2">Solution</h4>
+<h3 id="Solution-2">Solution</h3>
 <p>对模 $m$ 的完全剩余系简单讨论计算.</p>
-<h3 id="C1-k-LCM-easy-version">C1. k-LCM (easy version)</h3>
-<h4 id="Problem-3">Problem</h4>
+<h2 id="C1-k-LCM-easy-version">C1. k-LCM (easy version)</h2>
+<h3 id="Problem-3">Problem</h3>
 <p>对给定的 $n(3\leq n\leq 10^9)$, 输出三个数 $a_1,a_2,a_3$ 满足:<br>
 $$<br>
 a_1+a_2+a_3=n<br>
@@ -198,20 +198,20 @@ $$</p>
 LCM(a_1,a_2,a_3)\leq \frac{n}{2}<br>
 $$</p>
 <p>$t$ 组数据. ($t\leq 10^4$)</p>
-<h4 id="Solution-3">Solution</h4>
+<h3 id="Solution-3">Solution</h3>
 <p>若为奇数, 输出 $1, (n-1)/2, (n-1)/2$;</p>
 <p>若为偶数:</p>
 <ul>
 <li>若 $n/2$ 仍为偶数, 输出 $n/2, n/4, n/4$;</li>
 <li>否则输出 $2, (n-2)/2, (n-2)/2$.</li>
 </ul>
-<h3 id="C2-k-LCM-hard-version">C2. k-LCM (hard version)</h3>
-<h4 id="Problem-4">Problem</h4>
+<h2 id="C2-k-LCM-hard-version">C2. k-LCM (hard version)</h2>
+<h3 id="Problem-4">Problem</h3>
 <p>和 C1 几乎一致, 只是要输出 $k$ 个数而不是 $3$ 个.</p>
-<h4 id="Solution-4">Solution</h4>
+<h3 id="Solution-4">Solution</h3>
 <p>先输出 $(k-3)$ 个 $1$, 化为上一种情况.</p>
-<h3 id="D-Genius">D. Genius</h3>
-<h4 id="Problem-5">Problem</h4>
+<h2 id="D-Genius">D. Genius</h2>
+<h3 id="Problem-5">Problem</h3>
 <p><strong>Please note the non-standard memory limit.</strong></p>
 <p>There are $n$ problems numbered with integers from $1$ to $n$. $i$-th problem has the complexity $c_i=2^i$, tag $tag_i$ and score $s_i$.</p>
 <p>After solving the problem $i$ it’s allowed to solve problem $j$ if and only if $IQ&lt;|c_i−c_j|$ and $tag_i≠tag_j$. After solving it your $IQ$ changes and becomes $IQ=|c_i−c_j|$ and you gain $|s_i−s_j|$ points.</p>
@@ -225,13 +225,13 @@ $$</p>
 <p>It’s guaranteed that sum of $n$ over all test cases does not exceed $5000$.</p>
 <p><strong>Output</strong></p>
 <p>For each test case print a single integer  — the maximum number of points that can be earned.</p>
-<h4 id="Solution-5">Solution</h4>
+<h3 id="Solution-5">Solution</h3>
 <p>注意到任何两个 $2$ 的幂次数相减不可能相同, 并且被减数越大值越大. 考虑动态规划, 用 $dp[i]$ 表示最后以 $i$ 问题结尾能获得的最大价值. 那么 $i: 1\ldots n$, 而后遍历 $j:i-1\ldots 1$, 转移: 一个是 $i$ 可以由 $j$ 转移, 另外 $j$ 可以由 $i$ 转移. 而以这个顺序进行就会使得 $\vert c^i-c^j\vert$  递增, 就是 $IQ$ 是递增的. 时间复杂度: $O(n^2)$.</p>
-<h4 id="Code">Code</h4>
+<h3 id="Code">Code</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">5e3</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> dp[MAX_N], tag[MAX_N], s[MAX_N];</span><br><span class="line"><span class="keyword">int</span> T, n, ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, tag + i);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, s + i);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) dp[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt; <span class="number">0</span>; --j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tag[i] == tag[j]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">int</span> dpi = dp[i], dpj = dp[j], v = <span class="built_in">abs</span>(s[i] - s[j]);</span><br><span class="line">                dp[i] = <span class="built_in">max</span>(dp[i], dpj + v);</span><br><span class="line">                dp[j] = <span class="built_in">max</span>(dp[j], dpi + v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = dp[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) ans = <span class="built_in">max</span>(ans, dp[i]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="E1-Square-free-division-easy-version">E1. Square-free division (easy version)</h3>
-<h4 id="Problem-6">Problem</h4>
-<p><strong>This is the easy version of the problem. The only difference is that in this version k=0k=0.</strong></p>
+<h2 id="E1-Square-free-division-easy-version">E1. Square-free division (easy version)</h2>
+<h3 id="Problem-6">Problem</h3>
+<p><strong>This is the easy version of the problem. The only difference is that in this version $k=0$.</strong></p>
 <p>There is an array $a_1,a_2,…,a_n$ of $n$ positive integers. You should divide it into a minimal number of continuous segments, such that in each segment there are no two numbers (on different positions), whose product is a perfect square.</p>
 <p>Moreover, it is allowed to do at most kk such operations before the division: choose a number in the array and change its value to any positive integer. But in this version $k=0$, so it is not important.</p>
 <p>What is the minimum number of continuous segments you should use if you will make changes optimally?</p>
@@ -242,17 +242,17 @@ $$</p>
 <p>It’s guaranteed that the sum of $n$ over all test cases does not exceed $2\times 10^5$.</p>
 <p><strong>Output</strong></p>
 <p>For each test case print a single integer  — the answer to the problem.</p>
-<h4 id="Solution-6">Solution</h4>
+<h3 id="Solution-6">Solution</h3>
 <p>贪心策略, 首先预处理所有 $\sqrt{1e7}$ 下的素数, 然后暴力质因数分解, 将素数因子的幂次为奇数的留下, 对于每个质因数可能和后面某个数相乘得到完全平方数就是后面某个数得到的素数因子序列和它相同. 暴力把素数扔进vector再套一个map. 复杂度大概为 $O(\frac{n\sqrt{a_{max}}}{\log n}\sigma{(a)}\log n)$, 理论上不是很优秀, 但是实际跑得很快, 可能是没人卡吧.</p>
 <p>另外其实可以直接把某个 $a$ 直接分解成 $A^2 B$, 其中 $B$ 不再有平方因子, 那么就是找后面哪个数也可以分解出一样的 $B$, 然后就要划分一次. 这样的复杂度大概是 $O(n)$ 的.</p>
-<h4 id="Code-2">Code</h4>
+<h3 id="Code-2">Code</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">2e5</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_M = <span class="number">1e7</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_P = <span class="number">1e6</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> pri[MAX_P];</span><br><span class="line"><span class="keyword">int</span> vis[MAX_M];</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, <span class="keyword">bool</span>&gt; mp;</span><br><span class="line"><span class="keyword">int</span> T, n, cnt, ans, k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Euler</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i]) &#123;</span><br><span class="line">            pri[++cnt] = i;</span><br><span class="line">            vis[i] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; i * pri[j] &lt;= n; ++j) &#123;</span><br><span class="line">            vis[i * pri[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % pri[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">brute_force</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = n, i;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nst;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; pri[i] * pri[i] &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x % pri[i] == <span class="number">0</span>) x /= pri[i], ++tot;</span><br><span class="line">        <span class="keyword">if</span> (tot &amp; <span class="number">1</span>) &#123;</span><br><span class="line">            nst.push_back(pri[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">1</span>) nst.push_back(x);</span><br><span class="line">    <span class="keyword">if</span> (mp[nst]) &#123;</span><br><span class="line">        ++ans;</span><br><span class="line">        mp.<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    mp[nst] = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Euler(<span class="number">1e4</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;n, &amp;k);</span><br><span class="line">        mp.<span class="built_in">clear</span>();</span><br><span class="line">        ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> a;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;a);</span><br><span class="line">            brute_force(a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="E2-square-free-division-hard-version">E2. square-free division (hard version)</h3>
-<h4 id="Problem-7">Problem</h4>
+<h2 id="E2-square-free-division-hard-version">E2. square-free division (hard version)</h2>
+<h3 id="Problem-7">Problem</h3>
 <p>$0\leq k\leq 20$.</p>
-<h4 id="Solution-7">Solution</h4>
+<h3 id="Solution-7">Solution</h3>
 <p>考虑动态规划, 用 $dp[i][j]$ 表示 $1\ldots i$ 使用 $j$ 次变色最小分段数. 那么转移就是应该是利用 $t$ 次变色机会将 $l\ldots i$ 变为一段进行转移. 所以我们需要预处理利用 $t$ 次机会将 $l\ldots i$ 变为一段的 $l$, 并且尽可能最小化 $l$. 容易发现 $l$ 关于 $i$ 单调. 故利用双指针方法预处理 $O(nk)$, 总时间复杂度为 $O(nk^2)$.</p>
-<h4 id="Code-3">Code</h4>
+<h3 id="Code-3">Code</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">2e5</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_M = <span class="number">1e7</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> a[MAX_N], b[MAX_M], lft[MAX_N][<span class="number">23</span>], dp[MAX_N][<span class="number">23</span>];</span><br><span class="line"><span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; cnt;</span><br><span class="line"><span class="keyword">int</span> T, n, k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i * i &lt;= <span class="number">1e7</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j * i * i &lt;= <span class="number">1e7</span>; ++j) &#123;</span><br><span class="line">            b[j * i * i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;k);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i), a[i] = b[a[i]];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">                dp[i][j] = n + <span class="number">1</span>;</span><br><span class="line">                lft[i][j] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">            <span class="keyword">int</span> l = <span class="number">1</span>, now = <span class="number">0</span>;</span><br><span class="line">            cnt.<span class="built_in">clear</span>();</span><br><span class="line">            ++cnt[a[l]];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (cnt[a[i]] &gt; <span class="number">0</span>) ++now;</span><br><span class="line">                ++cnt[a[i]];</span><br><span class="line">                <span class="keyword">while</span> (now &gt; j) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (cnt[a[l]] &gt; <span class="number">1</span>) --now;</span><br><span class="line">                    --cnt[a[l]];</span><br><span class="line">                    ++l;</span><br><span class="line">                &#125;</span><br><span class="line">                lft[i][j] = l;</span><br><span class="line">                <span class="comment">// printf("lft[%d][%d]: %d\n", i, j, lft[i][j]);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">0</span>; t &lt;= j; ++t) &#123;</span><br><span class="line">                    <span class="keyword">int</span> l = lft[i][t];</span><br><span class="line">                    dp[i][j] = <span class="built_in">min</span>(dp[i][j], dp[l - <span class="number">1</span>][j - t] + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[n][k]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
@@ -320,6 +320,13 @@ $$</p>
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Atcoder/arc-115/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">ARC #115</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -399,7 +406,7 @@ $$</p>
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            10
+                            11
                         </p>
                     </a>
                 </div>
@@ -411,7 +418,7 @@ $$</p>
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            7
+                            8
                         </p>
                     </a>
                 </div>
@@ -423,7 +430,7 @@ $$</p>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            9
+                            10
                         </p>
                     </a>
                 </div>
