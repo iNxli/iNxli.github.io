@@ -7,23 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>KMP算法 - iNx</title>
+<title>AVATAR - iNx</title>
 
 
-    <meta name="description" content="HDU 1711 Number Sequence Time Limit: 10000&#x2F;5000 MS (Java&#x2F;Others)  Memory Limit: 32768&#x2F;32768 K (Java&#x2F;Others) Total Submission(s): 57954  Accepted Submission(s): 23132">
+    <meta name="description" content="小时候看阿凡达的时候，看了一会便觉得十分无聊，很快就关掉了。最近阿凡达重映，听同学说是一部很好的电影，特效也非常好，由于也好长时间没去看电影了，便约了同学一同去看。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="KMP算法">
-<meta property="og:url" content="http://inxli.cn/%E5%AD%97%E7%AC%A6%E4%B8%B2/kmp%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="AVATAR">
+<meta property="og:url" content="http://inxli.cn/Films/avatar/index.html">
 <meta property="og:site_name" content="iNx">
-<meta property="og:description" content="HDU 1711 Number Sequence Time Limit: 10000&#x2F;5000 MS (Java&#x2F;Others)  Memory Limit: 32768&#x2F;32768 K (Java&#x2F;Others) Total Submission(s): 57954  Accepted Submission(s): 23132">
+<meta property="og:description" content="小时候看阿凡达的时候，看了一会便觉得十分无聊，很快就关掉了。最近阿凡达重映，听同学说是一部很好的电影，特效也非常好，由于也好长时间没去看电影了，便约了同学一同去看。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/2004041.jfif">
-<meta property="article:published_time" content="2020-04-04T13:42:37.000Z">
-<meta property="article:modified_time" content="2020-09-03T04:10:26.352Z">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/avatar.jpg">
+<meta property="article:published_time" content="2021-03-23T16:33:08.000Z">
+<meta property="article:modified_time" content="2021-03-23T16:34:50.551Z">
 <meta property="article:author" content="iNx">
-<meta property="article:tag" content="KMP">
+<meta property="article:tag" content="Films">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/2004041.jfif">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/avatar.jpg">
 
 
 
@@ -132,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/2004041.jfif" alt="KMP算法">
+            <img class="thumbnail" src="/gallery/thumbnails/avatar.jpg" alt="AVATAR">
         </span>
     </div>
     
@@ -140,17 +140,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-04T13:42:37.000Z">2020-04-04</time>
+                <time class="level-item has-text-grey" datetime="2021-03-23T16:33:08.000Z">2021-03-24</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+                <a class="has-link-grey -link" href="/categories/Films/">Films</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 339 个字)
+                    8 分钟 读完 (大约 1203 个字)
                 </span>
                 
                 
@@ -164,39 +164,25 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                KMP算法
+                AVATAR
             
         </h1>
         <div class="content">
-            <h2 id="HDU-1711"><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1711">HDU 1711</a></h2>
-<h3><center>Number Sequence</center></h3>
-<center>Time Limit: 10000/5000 MS (Java/Others)  Memory Limit: 32768/32768 K (Java/Others)
-Total Submission(s): 57954  Accepted Submission(s): 23132</center>
+            <p>小时候看阿凡达的时候，看了一会便觉得十分无聊，很快就关掉了。最近阿凡达重映，听同学说是一部很好的电影，特效也非常好，由于也好长时间没去看电影了，便约了同学一同去看。</p>
 <a id="more"></a>
-<h4 id="Problem-Description">Problem Description</h4>
-<blockquote><p>Given two sequences of numbers : a[1], a[2], … , a[N], and b[1], b[2], … , b[M] (1 &lt;= M &lt;= 10000, 1 &lt;= N &lt;= 1000000). Your task is to find a number K which make a[K] = b[1], a[K + 1] = b[2], … , a[K + M - 1] = b[M]. If there are more than one K exist, output the smallest one.</p>
-</blockquote>
-<h4 id="Input">Input</h4>
-<blockquote><p>The first line of input is a number T which indicate the number of cases. Each case contains three lines. The first line is two numbers N and M (1 &lt;= M &lt;= 10000, 1 &lt;= N &lt;= 1000000). The second line contains N integers which indicate a[1], a[2], … , a[N]. The third line contains M integers which indicate b[1], b[2], … , b[M]. All integers are in the range of [-1000000, 1000000].</p>
-</blockquote>
-<h4 id="Output">Output</h4>
-<blockquote><p>For each test case, you should output one line which only contain K described above. If no such K exists, output -1 instead.</p>
-</blockquote>
-<h4 id="Sample-Input">Sample Input</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">13 5</span><br><span class="line">1 2 1 2 3 1 2 3 1 3 2 1 2</span><br><span class="line">1 2 3 1 3</span><br><span class="line">13 5</span><br><span class="line">1 2 1 2 3 1 2 3 1 3 2 1 2</span><br><span class="line">1 2 3 2 1</span><br></pre></td></tr></table></figure>
-<h4 id="Sample-Output">Sample Output</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">-1</span><br></pre></td></tr></table></figure>
-<h4 id="Source">Source</h4>
-<p><a href="http://acm.hdu.edu.cn/search.php?field=problem&amp;key=HDU+2007-Spring+Programming+Contest&amp;source=1&amp;searchmode=source">HDU 2007-Spring Programming Contest</a></p>
-<h2 id="代码">代码</h2>
-<figure class="highlight c"><figcaption><span>++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">namespace</span> iNx&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span> ;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">1e4</span> + <span class="number">10</span> ;</span><br><span class="line">    <span class="keyword">int</span> a[N],b[M],next[M];</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i,k;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b[i]);</span><br><span class="line">        next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">        i=<span class="number">0</span>;</span><br><span class="line">        k=<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;m<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(k==<span class="number">-1</span>||b[i]==b[k])&#123;</span><br><span class="line">                i++;</span><br><span class="line">                k++;</span><br><span class="line">                <span class="keyword">if</span>(b[i]!=b[k]) next[i]=k;</span><br><span class="line">                <span class="keyword">else</span> next[i]=next[k];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                k=next[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">        <span class="keyword">if</span>(n&lt;m)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n&amp;&amp;j&lt;m)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j==<span class="number">-1</span>||a[i]==b[j]) i++,j++;</span><br><span class="line">            <span class="keyword">else</span> j=next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(j==m)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i-j+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) iNx::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>电影主要讲了一个为了获取潘多拉星球某种价值连城的矿石的地球人派出主角杰克前去与当地土著人纳威人谈判，欲求让他们搬出原来地下藏有大量矿石的家园，但最后时限已到而主角已经早意识到任务不可能完成而挑起战争，于是理所当然的杰克联合纳威人将地球人赶出潘多拉星球的故事。</p>
+<p>对于关于“采矿”的态度，地球人阵营主要有两派，一方主要代表为一看就像坏人的高层人员帕克和霸气凛然的军官库里奇，他们认为要不惜代价甚至使用暴力夺取资源；另一方是为格蕾丝为代表的科学家们，他们希望和当地人交往学习，以和平方式解决问题。而在这种背景下主角的身份我觉得恰到好处，杰克 · 萨利是一名因战争下肢瘫痪的前海军战士，他将代替其死去的科学家弟弟去完成他的使命，这是由于阿凡达是由地球人和纳威人基因创造的生物，只有杰克能够操纵由弟弟基因创造的高成本阿凡达。这样一来，他其实不是科学家，但他其实也不在是士兵，而两方的对立使他陷入矛盾的处境。一方面，库里奇信任他曾是士兵，希望他帮助他们获取纳威人的信息以方便他们发动战争；而另一方面，格蕾丝希望他能够学习他们的文化，修复两球人濒临破碎的关系。而他，在纳威民族公主的教导下，最终坠入爱河，并由前一阵营转移到后一个阵营，而这一过程发生的很自然合理。电影最后的暴力反击我觉得就是比较“美国式”的，但更注重了整体的反击，而不是只有主角这一英雄奋勇杀敌。</p>
+<p>我觉得该电影对人物刻画非常形象，且十分合理运用了故事背景和环境。主角使一个残废了的军官，一开始我不太理解，但是后面一看就明白了——活在阿凡达身上的杰克，重新站了起来，他一醒来就迫不及待冲到了外面，不停地奔跑；而这么喜悦的他和后面形成了对比，当库里奇军官告诉他任务完成，他可以功成身退，还可以帮他的腿治好，他却很冷静地要回到纳威人身边接受成为他们一员的仪式。其他人，女主、“备胎男”、格蕾丝、部落首领等我觉得他们都各得其所，形象到位。另外在故事背景方面，纳威人是个原始的民族，得知他们被杰克欺骗时他们十分生气，将杰克绑了起来，杰克最后为了拯救纳威人制服了神兽魅影，成为当地人认为的魅影骑士，由于封建的信仰，他成功拾回纳威人的信任。这样的设置，不仅不会让人觉得突兀莫名其妙，且不会有冗余的情节，我觉得恰到好处。</p>
+<p>除了这些感触比较深的地方之外，电影的特效方面确实做得非常好，在一个未知的星球，可以充分发挥想象力，设计各种各样奇异的东西，并且没有令人感到一种夸张到觉得很“假”的感觉，10年前，这确实是十分不容易了。因为去得晚，没办法看IMAX，最后看了Star-MAX(哈哈哈)，音效方面比较一般。其他方面，诸如男女主角发展和多处杰克第一人称独白和视频记录生活这一设置等方面都值得赏析，限于水平一般，就不说了…</p>
+<p>最后，当然是墙裂推荐去看。</p>
+
         </div>
         
                     <ul class="post-copyright">
-                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E5%AD%97%E7%AC%A6%E4%B8%B2/kmp%E7%AE%97%E6%B3%95/">KMP算法</a></li>
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/Films/avatar/">AVATAR</a></li>
                     <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
-                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E5%AD%97%E7%AC%A6%E4%B8%B2/kmp%E7%AE%97%E6%B3%95/">http://inxli.cn/%E5%AD%97%E7%AC%A6%E4%B8%B2/kmp%E7%AE%97%E6%B3%95/</a></li>
-                    <li><strong>发布时间：</strong>2020-04-04</li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/Films/avatar/">http://inxli.cn/Films/avatar/</a></li>
+                    <li><strong>发布时间：</strong>2021-03-24</li>
                     <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                 </li>
                 </ul>
@@ -206,7 +192,7 @@ Total Submission(s): 57954  Accepted Submission(s): 23132</center>
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/KMP/" rel="tag">KMP</a>
+                    <a class="has-link-grey -link" href="/tags/Films/" rel="tag">Films</a>
                 </div>
             </div>
         </div>
@@ -256,17 +242,10 @@ Total Submission(s): 57954  Accepted Submission(s): 23132</center>
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/%E5%88%86%E5%9D%97/luogu-p2801-%E6%95%99%E4%B8%BB%E7%9A%84%E9%AD%94%E6%B3%95/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">luogu P2801 教主的魔法</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%89/">
-                <span class="level-item">简单的偏微分方程（练习题）</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/Atcoder/arc-115/">
+                <span class="level-item">ARC #115</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -415,53 +394,6 @@ Total Submission(s): 57954  Accepted Submission(s): 23132</center>
 </div>
     
         
-
-    <div class="card widget column-left is-sticky" id="toc">
-        <div class="card-content">
-            <div class="menu">
-                <h3 class="menu-label">
-                    目录
-                </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#HDU-1711">
-        <span class="has-mr-6">1</span>
-        <span>HDU 1711</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">1.1</span>
-        <span>Number Sequence</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Problem-Description">
-        <span class="has-mr-6">1.1.1</span>
-        <span>Problem Description</span>
-        </a></li><li>
-        <a class="is-flex" href="#Input">
-        <span class="has-mr-6">1.1.2</span>
-        <span>Input</span>
-        </a></li><li>
-        <a class="is-flex" href="#Output">
-        <span class="has-mr-6">1.1.3</span>
-        <span>Output</span>
-        </a></li><li>
-        <a class="is-flex" href="#Sample-Input">
-        <span class="has-mr-6">1.1.4</span>
-        <span>Sample Input</span>
-        </a></li><li>
-        <a class="is-flex" href="#Sample-Output">
-        <span class="has-mr-6">1.1.5</span>
-        <span>Sample Output</span>
-        </a></li><li>
-        <a class="is-flex" href="#Source">
-        <span class="has-mr-6">1.1.6</span>
-        <span>Source</span>
-        </a></li></ul></li></ul></li><li>
-        <a class="is-flex" href="#代码">
-        <span class="has-mr-6">2</span>
-        <span>代码</span>
-        </a></li></ul>
-            </div>
-        </div>
-    </div>
 
     
     
