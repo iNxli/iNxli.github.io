@@ -7,24 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>ODE常微分方程的微分算子法（1） - iNx</title>
+<title>210329Broadcast Stations - iNx</title>
 
 
-    <meta name="description" content="常微分方程的微分算子法">
+    <meta name="description" content="题目链接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ODE常微分方程的微分算子法（1）">
-<meta property="og:url" content="http://inxli.cn/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:title" content="210329Broadcast Stations">
+<meta property="og:url" content="http://inxli.cn/%E5%9B%BE%E8%AE%BA/210329broadcast-stations/index.html">
 <meta property="og:site_name" content="iNx">
-<meta property="og:description" content="常微分方程的微分算子法">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/2004031.jfif">
-<meta property="article:published_time" content="2020-04-03T13:43:57.000Z">
-<meta property="article:modified_time" content="2020-04-06T15:00:24.785Z">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
+<meta property="article:published_time" content="2021-03-29T11:02:44.000Z">
+<meta property="article:modified_time" content="2021-03-29T11:22:13.318Z">
 <meta property="article:author" content="iNx">
-<meta property="article:tag" content="数学">
-<meta property="article:tag" content="ODE">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="Tree-DP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/2004031.jfif">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
 
 
 
@@ -133,7 +133,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/2004031.jfif" alt="ODE常微分方程的微分算子法（1）">
+            <img class="thumbnail" src="/gallery/thumbnails/200401.png" alt="210329Broadcast Stations">
         </span>
     </div>
     
@@ -141,17 +141,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-03T13:43:57.000Z">2020-04-03</time>
+                <time class="level-item has-text-grey" datetime="2021-03-29T11:02:44.000Z">2021-03-29</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+                <a class="has-link-grey -link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1104 个字)
+                    3 分钟 读完 (大约 417 个字)
                 </span>
                 
                 
@@ -165,205 +165,36 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                ODE常微分方程的微分算子法（1）
+                210329Broadcast Stations
             
         </h1>
         <div class="content">
-            <p>常微分方程的微分算子法</p>
+            <p><a href="https://ac.nowcoder.com/acm/contest/13506/A">题目链接</a></p>
 <a id="more"></a>
-<h2 id="定义">定义</h2>
-<p>定义微分算子符号 $D^n=\frac{d^n}{dx^n}$，则二阶线性微分方程<br>
+<h3 id="Solution">Solution</h3>
+<p>树形dp, 用 $f[u][k]$ 表示以当前点为根节点, 且当且可以向上传递 $\geq k$ 的贡献并且其子树为全覆盖. 并用 $g[u][k]$ 表示所用距离 $u$ 小于等于 $k$ 并且将下方的所有结点覆盖的答案和的最小值. 方程转移考虑两个问题:</p>
+<ul>
+<li>若当前点设置的 $p\geq k$;</li>
+<li>若当前点由儿子节点可以向上传递 $k$, 故可以向上传递 $k + 1$.</li>
+</ul>
+<p>显然有 $g[u][k] = \sum{g[v][k - 1]}$, $v$ 是 $u$ 的子结点. 另外对于 $f$ 的转移则为:<br>
 $$<br>
-y’’+Ay’+By=f(x)<br>
-$$<br>
-可以写成<br>
-$$<br>
-(D^2+AD+B)y=f(x)<br>
-$$<br>
-记多项式 $P(x)=x^2+Ax+B$，则又可以写成<br>
-$$<br>
-P(D)y=f(x)<br>
+f[u][k] = min(f[u][k+1],k+g[u][k+1], f[v][k+1]+g[u][k+1]-g[v][k])(k&gt;0)<br>
 $$</p>
-<h2 id="指数型">指数型</h2>
-<h3 id="代换法则">代换法则</h3>
-<h4 id="描述">描述</h4>
-<blockquote><p>$$<br>
-P(D)e^{\alpha x}=P(\alpha)e^{\alpha x}<br>
-$$<br>
-$\alpha$ 为复数．</p>
-</blockquote>
-<h4 id="证明">证明</h4>
-<p>显然等价于证明<br>
-$$<br>
-D^n e^{\alpha x}=\alpha^n e^{\alpha x}<br>
-$$<br>
-而这是显然的．</p>
-<h3 id="指数输入定理">指数输入定理</h3>
-<h4 id="描述-2">描述</h4>
-<blockquote><p>若 $P(D)y=e^{\alpha x}$，则<br>
-$$<br>
-y_p=\frac{e^{\alpha x}}{P(\alpha)}(while\ P(\alpha)\neq0)<br>
-$$<br>
-其中 $y_p$ 表示一个特解．</p>
-</blockquote>
-<h4 id="证明-2">证明</h4>
-<p>只需讲 $y_p$ 代入验证是方程的解即可，由代换法则</p>
-
-$$
-\begin{align*}
-P(D)y_p=&P(D)\frac{e^{\alpha x}}{P(\alpha)}\\
-=&\frac{P(\alpha)e^{\alpha x}}{P(\alpha)}\\
-=&e^{\alpha x}
-\end{align*}
-$$
-
-<p>证毕．</p>
-<h4 id="例题">例题</h4>
-<p>求微分方程<br>
-$$<br>
-y’’-y’+2y=10e^{-x}\sin x<br>
-$$<br>
-解：</p>
-<p>先将方程<strong>复化</strong><br>
-$$<br>
-(D^2-D+2)\tilde{y}=10e^{(-1+i)x}<br>
-$$<br>
-方程特解 $y_p$ 即为 $\tilde{y}_p$ 的虚部，由指数输入定理</p>
-
-$$
-\begin{align*}
-\tilde y_p&=\frac{10e^{(-1+i)x}}{(-1+i)^2-(-1+i)+2}\\
-&=\frac{10e^{(-1+i)x}}{-2i+1-i+2}\\
-&=\frac{10e^{-x}(\cos x+i\sin x)}{3-3i}\\
-&=\frac{10}{6}(1+i)e^{-x}(\cos x+i\sin x)\\
-\end{align*}
-$$
-
-<p>因此，$y_p=$<br>
-$$<br>
-\frac{5}{3}e^{-x}(\sin x+\cos x)<br>
-$$<br>
-那么如果 $p(\alpha)=0$ 呢？</p>
-<h3 id="指数移位法则">指数移位法则</h3>
-<p>为与上面的情况区分，下面不再写 $\alpha$ 而是 $a$，但是 $a$ 仍然可以是复数．</p>
-<h4 id="描述-3">描述</h4>
-<blockquote><p>$$<br>
-P(D)e^{ax}u(x)=e^{ax}P(D+a)u(x)<br>
+<p>$$<br>
+f[u][0]=min(f[v][1]+g[u][1]-g[v][0])<br>
 $$</p>
-</blockquote>
-<h4 id="证明-3">证明</h4>
-<p>利用数学归纳法并且与代换法则相同，等价于证明单个算子的情况，即<br>
-$$<br>
-D^ne^{ax}u(x)=e^{ax}(D+a)^n u(x)<br>
-$$<br>
-在不引起歧义的前提下，下面将 $u(x)$ 写成 $u$ 而不影响理解．</p>
-<p>（1）当 $n=1$ 时<br>
-$$<br>
-D e^{ax}u=ae^{ax}u+e^{ax}Du=e^{ax}(D+a)u<br>
-$$<br>
-所以当 $n=1$ 时该法则正确．</p>
-<p>（2）当 $n=k-1$ 时成立</p>
-
-$$
-\begin{align*}
-D^ke^{ax}u&=D(D^{k-1}e^{ax}u)\\
-&=D(e^{ax}(D+a)^{k-1}u)\\
-&=e^{ax}(D+a)^ku
-\end{align*}
-$$
-
-<p>证毕．</p>
-<h3 id="一般性结论">一般性结论</h3>
-<p>首先来看二阶微分方程．</p>
-<h4 id="单根">单根</h4>
-<p>若 $P(a)=0$ 且 $a$ 是单根，则有</p>
-<blockquote><p>$$<br>
-y_p=\frac{xe^{ax}}{P’(a)}<br>
-$$</p>
-</blockquote>
-<h4 id="证明-4">证明</h4>
-<p>因为 $a$ 是 $P(D)$ 的一个根，所以可以设<br>
-$$<br>
-P(D)=(D-a)(D-b) (a\neq b)<br>
-$$<br>
-因此<br>
-$$<br>
-P’(D)=D-a+D-b<br>
-$$<br>
-也即<br>
-$$<br>
-P’(a)=a-b<br>
-$$<br>
-代入以检验解 $y_p$ 的正确性<br>
-$$<br>
-P(D)\frac{e^{ax}x}{P’(a)}=\frac{e^{ax}(D-b-a)Dx}{P’(a)}=\frac{e^{ax}(a-b)}{(a-b)}=e^{ax}<br>
-$$<br>
-证毕．</p>
-<h4 id="二重根">二重根</h4>
-<p>若 $a$ 是二重根，则有</p>
-<blockquote><p>$$<br>
-y_p=\frac{x^2e^{ax}}{P’’(a)}<br>
-$$</p>
-</blockquote>
-<p>证明与前一种类似，设 $P(D)=(D-a)^2$ 进行检验即可．</p>
-<h4 id="例题-2">例题</h4>
-<p>求<br>
-$$<br>
-y’’-3y+2y=e^x<br>
-$$<br>
-的特解．</p>
-<p>解：<br>
-$$<br>
-P(D)=D^2-3D+2<br>
-$$<br>
-$a=1$ 是单根（一重根），所以<br>
-$$<br>
-y_p=\frac{xe^x}{P’(1)}=\frac{xe^{x}}{2-3}=-xe^x<br>
-$$</p>
-<h4 id="更一般方程和-n-重根">更一般方程和 $n$ 重根</h4>
-<p>由前面两个例子，其实可以猜出：</p>
-<p>当 $a$ 是 $n$ 重根时</p>
-<blockquote><p>$$<br>
-y_p=\frac{e^{ax}x^n}{P^{(n)}(a)}<br>
-$$</p>
-</blockquote>
-<p>其实将 $P(D)$ 理解为 $P^{(0)}(D)$，则上述结论为一般性结论，适用于任何情况．</p>
-<h4 id="证明-5">证明</h4>
-<p>和前面的思路其实类似，关键在于怎么表示 $P(D)$ 已提取对我们最有利的部分．</p>
-<p>设<br>
-$$<br>
-P(D)=(D-a)^n \tilde{P}(D)<br>
-$$<br>
-则<br>
-$$<br>
-P^{(n)}(D)=n!\tilde P(D)+(D-a)A(D)<br>
-$$<br>
-其中，$A(D)$ 是关于 $D$ 的多项式，可以看出来<br>
-$$<br>
-P^{(n)}(a)=n!\tilde P(a)<br>
-$$<br>
-将 $y_p$ 代入方程检验</p>
-
-$$
-\begin{align*}
-P(D)\frac{e^{ax}x^n}{P^{(n)(a)}}=&\frac{e^{ax}P(D+a)x^n}{P^{(n)}(a)}\\
-=&\frac{e^{ax}\tilde P(D+a)D^n x^n}{n! \tilde P(a)}\\
-=&\frac{e^{ax}\tilde P(D+a)\times n!}{n! \tilde P(a)}\\
-=&\frac{e^{ax}\tilde P(a)\times n!}{n! \tilde P(a)}\\
-=&e^{ax}
-\end{align*}
-$$
-
-<h3 id="结语">结语</h3>
-<p>在网上可以找到的算子法本就少之又少，大部分又只重结论，云里雾里，还需要多记很多麻烦的情况．例如三角函数，但是实际上只需要将三角函数复化就可以用指数的形式轻松解决，最后其实就只有一个公式．这次先谈到这，读者可以再多思考并做一些练习尝试，下次我再介绍 $f(x)$ 为多项式的情况．</p>
+<p>时间复杂度: $O(n^2)$.</p>
+<h3 id="Code">Code</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> to, nxt;</span><br><span class="line">    Edge(<span class="keyword">int</span> _to = <span class="number">0</span>, <span class="keyword">int</span> _nxt = <span class="number">0</span>) : to(_to), nxt(_nxt) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">5e3</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> dp[MAX_N][MAX_N], dps[MAX_N][MAX_N], head[MAX_N];</span><br><span class="line">Edge e[MAX_N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> n, cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    e[++cnt].to = y; e[cnt].nxt = head[x]; head[x] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = e[i].to;</span><br><span class="line">        <span class="keyword">if</span> (v == fa) <span class="keyword">continue</span>;</span><br><span class="line">        dfs(v, u);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) dps[u][i] += dps[v][i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    dp[u][n] = n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = n - <span class="number">1</span>; k &gt;= <span class="number">0</span>; --k) &#123;</span><br><span class="line">        <span class="keyword">if</span> (k) dp[u][k] = <span class="built_in">min</span>(dp[u][k + <span class="number">1</span>], k + dps[u][k + <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">else</span> dp[u][k] = dp[u][k + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = e[i].to;</span><br><span class="line">            <span class="keyword">if</span> (v == fa) <span class="keyword">continue</span>;</span><br><span class="line">            dp[u][k] = <span class="built_in">min</span>(dp[u][k], dp[v][k + <span class="number">1</span>] + dps[u][k + <span class="number">1</span>] - dps[v][k]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dps[u][<span class="number">0</span>] = dp[u][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; ++k) dps[u][k] = <span class="built_in">min</span>(dps[u][k], dps[u][<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">        add(u, v); add(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[<span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
                     <ul class="post-copyright">
-                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/">ODE常微分方程的微分算子法（1）</a></li>
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E5%9B%BE%E8%AE%BA/210329broadcast-stations/">210329Broadcast Stations</a></li>
                     <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
-                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/">http://inxli.cn/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/</a></li>
-                    <li><strong>发布时间：</strong>2020-04-03</li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E5%9B%BE%E8%AE%BA/210329broadcast-stations/">http://inxli.cn/%E5%9B%BE%E8%AE%BA/210329broadcast-stations/</a></li>
+                    <li><strong>发布时间：</strong>2021-03-29</li>
                     <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                 </li>
                 </ul>
@@ -373,7 +204,7 @@ $$
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/ODE/" rel="tag">ODE</a>, <a class="has-link-grey -link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a>
+                    <a class="has-link-grey -link" href="/tags/DP/" rel="tag">DP</a>, <a class="has-link-grey -link" href="/tags/Tree-DP/" rel="tag">Tree-DP</a>
                 </div>
             </div>
         </div>
@@ -423,17 +254,10 @@ $$
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%89/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">简单的偏微分方程（练习题）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/%E7%BB%83%E4%B9%A0%E9%A2%98/%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/">
-                <span class="level-item">取值范围</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/Films/avatar/">
+                <span class="level-item">AVATAR</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -590,86 +414,14 @@ $$
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#定义">
+        <a class="is-flex" href="#Solution">
         <span class="has-mr-6">1</span>
-        <span>定义</span>
+        <span>Solution</span>
         </a></li><li>
-        <a class="is-flex" href="#指数型">
+        <a class="is-flex" href="#Code">
         <span class="has-mr-6">2</span>
-        <span>指数型</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#代换法则">
-        <span class="has-mr-6">2.1</span>
-        <span>代换法则</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#描述">
-        <span class="has-mr-6">2.1.1</span>
-        <span>描述</span>
-        </a></li><li>
-        <a class="is-flex" href="#证明">
-        <span class="has-mr-6">2.1.2</span>
-        <span>证明</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#指数输入定理">
-        <span class="has-mr-6">2.2</span>
-        <span>指数输入定理</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#描述-2">
-        <span class="has-mr-6">2.2.1</span>
-        <span>描述</span>
-        </a></li><li>
-        <a class="is-flex" href="#证明-2">
-        <span class="has-mr-6">2.2.2</span>
-        <span>证明</span>
-        </a></li><li>
-        <a class="is-flex" href="#例题">
-        <span class="has-mr-6">2.2.3</span>
-        <span>例题</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#指数移位法则">
-        <span class="has-mr-6">2.3</span>
-        <span>指数移位法则</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#描述-3">
-        <span class="has-mr-6">2.3.1</span>
-        <span>描述</span>
-        </a></li><li>
-        <a class="is-flex" href="#证明-3">
-        <span class="has-mr-6">2.3.2</span>
-        <span>证明</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#一般性结论">
-        <span class="has-mr-6">2.4</span>
-        <span>一般性结论</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#单根">
-        <span class="has-mr-6">2.4.1</span>
-        <span>单根</span>
-        </a></li><li>
-        <a class="is-flex" href="#证明-4">
-        <span class="has-mr-6">2.4.2</span>
-        <span>证明</span>
-        </a></li><li>
-        <a class="is-flex" href="#二重根">
-        <span class="has-mr-6">2.4.3</span>
-        <span>二重根</span>
-        </a></li><li>
-        <a class="is-flex" href="#例题-2">
-        <span class="has-mr-6">2.4.4</span>
-        <span>例题</span>
-        </a></li><li>
-        <a class="is-flex" href="#更一般方程和-n-重根">
-        <span class="has-mr-6">2.4.5</span>
-        <span>更一般方程和 $n$ 重根</span>
-        </a></li><li>
-        <a class="is-flex" href="#证明-5">
-        <span class="has-mr-6">2.4.6</span>
-        <span>证明</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#结语">
-        <span class="has-mr-6">2.5</span>
-        <span>结语</span>
-        </a></li></ul></li></ul>
+        <span>Code</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
