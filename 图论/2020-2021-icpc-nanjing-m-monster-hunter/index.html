@@ -7,22 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Broadcast Stations - iNx</title>
+<title>2020-2021 ICPC Nanjing M. Monster Hunter - iNx</title>
 
 
-    <meta name="description" content="题目链接">
+    <meta name="description" content="M. Monster Hunter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Broadcast Stations">
-<meta property="og:url" content="http://inxli.cn/%E5%9B%BE%E8%AE%BA/broadcast-stations/index.html">
+<meta property="og:title" content="2020-2021 ICPC Nanjing M. Monster Hunter">
+<meta property="og:url" content="http://inxli.cn/%E5%9B%BE%E8%AE%BA/2020-2021-icpc-nanjing-m-monster-hunter/index.html">
 <meta property="og:site_name" content="iNx">
-<meta property="og:description" content="题目链接">
+<meta property="og:description" content="M. Monster Hunter">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
-<meta property="article:published_time" content="2021-03-29T11:02:44.000Z">
-<meta property="article:modified_time" content="2021-04-01T08:59:03.434Z">
+<meta property="article:published_time" content="2021-04-01T08:48:14.000Z">
+<meta property="article:modified_time" content="2021-04-01T09:58:04.926Z">
 <meta property="article:author" content="iNx">
 <meta property="article:tag" content="DP">
 <meta property="article:tag" content="Tree DP">
+<meta property="article:tag" content="背包">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
 
@@ -133,7 +134,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/200401.png" alt="Broadcast Stations">
+            <img class="thumbnail" src="/gallery/thumbnails/200401.png" alt="2020-2021 ICPC Nanjing M. Monster Hunter">
         </span>
     </div>
     
@@ -141,7 +142,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-03-29T11:02:44.000Z">2021-03-29</time>
+                <time class="level-item has-text-grey" datetime="2021-04-01T08:48:14.000Z">2021-04-01</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a>
@@ -151,7 +152,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 417 个字)
+                    6 分钟 读完 (大约 917 个字)
                 </span>
                 
                 
@@ -165,36 +166,62 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Broadcast Stations
+                2020-2021 ICPC Nanjing M. Monster Hunter
             
         </h1>
         <div class="content">
-            <p><a href="https://ac.nowcoder.com/acm/contest/13506/A">题目链接</a></p>
+            <h2 id="M-Monster-Hunter"><a href="https://codeforc.es/gym/102992/problem/M">M. Monster Hunter</a></h2>
 <a id="more"></a>
 <h3 id="Solution">Solution</h3>
-<p>树形dp, 用 $f[u][k]$ 表示以当前点为根节点, 且当且可以向上传递 $\geq k$ 的贡献并且其子树为全覆盖. 并用 $g[u][k]$ 表示所用距离 $u$ 小于等于 $k$ 并且将下方的所有结点覆盖的答案和的最小值. 方程转移考虑两个问题:</p>
-<ul>
-<li>若当前点设置的 $p\geq k$;</li>
-<li>若当前点由儿子节点可以向上传递 $k$, 故可以向上传递 $k + 1$.</li>
-</ul>
-<p>显然有 $g[u][k] = \sum{g[v][k - 1]}$, $v$ 是 $u$ 的子结点. 另外对于 $f$ 的转移则为:<br>
+<p>说是一种叫有依懒的背包问题. 于是先看一道例题:</p>
+<h4 id="例题-有依赖的背包">例题: <a href="https://www.acwing.com/problem/content/10/">有依赖的背包</a></h4>
+<p>这个问题中的物品关系形成一棵树, 一个物品可以被选当前仅当其父亲被选择. 故原背包问题的状态 <code>f[i][k]</code> 转移的难点在于不知道父亲是否被选. 为解决此问题, 考虑树形dp, 用 <code>f[u][k]</code> 表示当前结点必须选, 以此结点为根节点的子树在背包容量为 $k$ 时的最大价值. 接着不断合并儿子节点来更新当前结点的答案:<br>
 $$<br>
-f[u][k] = min(f[u][k+1],k+g[u][k+1], f[v][k+1]+g[u][k+1]-g[v][k])(k&gt;0)<br>
+f[u][k] = \max_{v\in son(u)}{f[v][k - j]+f[u][j]}<br>
+$$<br>
+很显然, 这样的时间复杂度为 $O(n^3)$.</p>
+<p>再看现在这题, 反过来考虑问题: 保留 $0,1,\ldots, n$ 个结点可以得到的最小代价. 很容易发现一棵树的代价即为<strong>所有非根结点的代价的2倍+根节点的代价</strong>, 虽然这和接下来使用动态规划没有什么太大关系. 类似例题的方法, 用 <code>f[u][k][0/1]</code> 表示以 $u$ 为根的子树选了 $k$ 个点的最小代价($0$ 表示当前结点不选, $1$ 表示当前结点选). 容易得到转移:<br>
+$$<br>
+f[u][k][0] = \min_{v\in son(u)}{f[v][j][0/1]+f[u][k-j][0]}<br>
 $$</p>
 <p>$$<br>
-f[u][0]=min(f[v][1]+g[u][1]-g[v][0])<br>
+f[u][k][1]=\min_{v\in son{(u)}}{f[v][j][0]+f[u][k-j][1],f[v][j][1]+f[u][k-j][1]+hp[v]}<br>
 $$</p>
-<p>时间复杂度: $O(n^2)$.</p>
+<p>第二个方程是因为当父亲结点和儿子节点都选择那么儿子节点不是根, 故要再加上自己的代价. 但是容易发现这样的时间复杂度亦是: $O(n^3)$. TLE…</p>
+<p>做一些优化, 可以发现对于某个结点 $u$, 在对某个儿子进行合并的时候, 当前可用的状态的第二维其实只有之前已经被合并的儿子的树的大小, 而对于当前儿子, 其第二维只有自己的树的大小. 但是这个复杂度似乎还是 $O(n^3)$ 的, 但是实际上这是一个不显然的结论, 实际上的复杂度为 $O(n^2)$! 接下来简单证明:</p>
+<ul>
+<li>首先转移数为</li>
+</ul>
+
+$$
+\sum_{u\in T}\sum_{i=1}^{size\ of\ son(u)}siz[son(u,i)](1+siz[son(u,1)+\ldots+siz[son(u,i-1)]])
+$$
+
+<ul>
+<li>接着对上面的式子简单放缩:</li>
+</ul>
+
+$$
+\begin{align*}
+UHS&=\sum_{u\in T}siz[u]+\sum_{u\in T}\sum_{i\ne j}(siz[son[i]]siz[son[j]])\\
+&\leq h\times n+\frac{1}{2}\sum_{u\in T}\left(\sum siz[son[i]]+1\right)^2-\sum{siz^2[son[i]]}\\
+&\leq n^2+\frac{1}{2}\sum_{u\in T}siz[u]^2-\sum{siz^2[son[i]]}\\
+&\leq n^2+\frac{1}{2}siz^2[root]\\
+&=O(n^2)
+\end{align*}
+$$
+
+<p>证毕.</p>
 <h3 id="Code">Code</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> to, nxt;</span><br><span class="line">    Edge(<span class="keyword">int</span> _to = <span class="number">0</span>, <span class="keyword">int</span> _nxt = <span class="number">0</span>) : to(_to), nxt(_nxt) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">5e3</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> dp[MAX_N][MAX_N], dps[MAX_N][MAX_N], head[MAX_N];</span><br><span class="line">Edge e[MAX_N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> n, cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    e[++cnt].to = y; e[cnt].nxt = head[x]; head[x] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = e[i].to;</span><br><span class="line">        <span class="keyword">if</span> (v == fa) <span class="keyword">continue</span>;</span><br><span class="line">        dfs(v, u);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) dps[u][i] += dps[v][i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    dp[u][n] = n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = n - <span class="number">1</span>; k &gt;= <span class="number">0</span>; --k) &#123;</span><br><span class="line">        <span class="keyword">if</span> (k) dp[u][k] = <span class="built_in">min</span>(dp[u][k + <span class="number">1</span>], k + dps[u][k + <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">else</span> dp[u][k] = dp[u][k + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = e[i].to;</span><br><span class="line">            <span class="keyword">if</span> (v == fa) <span class="keyword">continue</span>;</span><br><span class="line">            dp[u][k] = <span class="built_in">min</span>(dp[u][k], dp[v][k + <span class="number">1</span>] + dps[u][k + <span class="number">1</span>] - dps[v][k]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dps[u][<span class="number">0</span>] = dp[u][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; ++k) dps[u][k] = <span class="built_in">min</span>(dps[u][k], dps[u][<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">        add(u, v); add(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[<span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 5e12</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> to, nxt;</span><br><span class="line">    Edge(<span class="keyword">int</span> _to = <span class="number">0</span>, <span class="keyword">int</span> _nxt = <span class="number">0</span>) : to(_to), nxt(_nxt) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">2e3</span> + <span class="number">7</span>;</span><br><span class="line">Edge e[MAX_N];</span><br><span class="line"><span class="keyword">int</span> dp[MAX_N][MAX_N][<span class="number">2</span>], head[MAX_N], hp[MAX_N], siz[MAX_N];</span><br><span class="line"><span class="keyword">int</span> T, n, cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    e[++cnt].to = v; e[cnt].nxt = head[u]; head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    dp[u][<span class="number">1</span>][<span class="number">1</span>] = hp[u], dp[u][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    siz[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = e[i].to;</span><br><span class="line">        dfs(v);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = siz[u]; k &gt;= <span class="number">0</span>; --k) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = siz[v]; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">                dp[u][j + k][<span class="number">0</span>] = <span class="built_in">min</span>(dp[u][j + k][<span class="number">0</span>], <span class="built_in">min</span>(dp[v][j][<span class="number">0</span>] + dp[u][k][<span class="number">0</span>], dp[v][j][<span class="number">1</span>] + dp[u][k][<span class="number">0</span>]));</span><br><span class="line">                dp[u][j + k][<span class="number">1</span>] = <span class="built_in">min</span>(dp[u][j + k][<span class="number">1</span>], <span class="built_in">min</span>(dp[v][j][<span class="number">1</span>] + dp[u][k][<span class="number">1</span>] + hp[v], dp[v][j][<span class="number">0</span>] + dp[u][k][<span class="number">1</span>]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        siz[u] += siz[v];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n);</span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) head[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= n; ++k) &#123;</span><br><span class="line">                dp[i][k][<span class="number">0</span>] = dp[i][k][<span class="number">1</span>] = INF;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> p;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;p);</span><br><span class="line">            add(p, i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, hp + i);</span><br><span class="line">        dfs(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i; --i) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld "</span>, <span class="built_in">min</span>(dp[<span class="number">1</span>][i][<span class="number">0</span>], dp[<span class="number">1</span>][i][<span class="number">1</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, <span class="built_in">min</span>(dp[<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>], dp[<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
                     <ul class="post-copyright">
-                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E5%9B%BE%E8%AE%BA/broadcast-stations/">Broadcast Stations</a></li>
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E5%9B%BE%E8%AE%BA/2020-2021-icpc-nanjing-m-monster-hunter/">2020-2021 ICPC Nanjing M. Monster Hunter</a></li>
                     <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
-                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E5%9B%BE%E8%AE%BA/broadcast-stations/">http://inxli.cn/%E5%9B%BE%E8%AE%BA/broadcast-stations/</a></li>
-                    <li><strong>发布时间：</strong>2021-03-29</li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E5%9B%BE%E8%AE%BA/2020-2021-icpc-nanjing-m-monster-hunter/">http://inxli.cn/%E5%9B%BE%E8%AE%BA/2020-2021-icpc-nanjing-m-monster-hunter/</a></li>
+                    <li><strong>发布时间：</strong>2021-04-01</li>
                     <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                 </li>
                 </ul>
@@ -204,7 +231,7 @@ $$</p>
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/DP/" rel="tag">DP</a>, <a class="has-link-grey -link" href="/tags/Tree-DP/" rel="tag">Tree DP</a>
+                    <a class="has-link-grey -link" href="/tags/DP/" rel="tag">DP</a>, <a class="has-link-grey -link" href="/tags/Tree-DP/" rel="tag">Tree DP</a>, <a class="has-link-grey -link" href="/tags/%E8%83%8C%E5%8C%85/" rel="tag">背包</a>
                 </div>
             </div>
         </div>
@@ -254,17 +281,10 @@ $$</p>
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/CF/codecraft-21-and-cf-round-711-div-2/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">CodeCraft-21 and CF Round #711(Div.2)</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/Films/avatar/">
-                <span class="level-item">AVATAR</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/CF/codecraft-21-and-cf-round-711-div-2/">
+                <span class="level-item">CodeCraft-21 and CF Round #711(Div.2)</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -421,14 +441,22 @@ $$</p>
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Solution">
+        <a class="is-flex" href="#M-Monster-Hunter">
         <span class="has-mr-6">1</span>
+        <span>M. Monster Hunter</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Solution">
+        <span class="has-mr-6">1.1</span>
         <span>Solution</span>
-        </a></li><li>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#例题-有依赖的背包">
+        <span class="has-mr-6">1.1.1</span>
+        <span>例题: 有依赖的背包</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Code">
-        <span class="has-mr-6">2</span>
+        <span class="has-mr-6">1.2</span>
         <span>Code</span>
-        </a></li></ul>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
