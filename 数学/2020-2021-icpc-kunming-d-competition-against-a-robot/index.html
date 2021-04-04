@@ -7,24 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>简单的偏微分方程（练习题） - iNx</title>
+<title>2020-2021 ICPC Kunming D. Competition Against a Robot - iNx</title>
 
 
-    <meta name="description" content="例题 已知微分方程 $$ \frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}&#x3D;0 $$ 有形如 $u&#x3D;\varphi(\frac{y}{x})$ 的解，试求此解．">
+    <meta name="description" content="这场比赛爬了… 是这样一个问题: 两个人 A, B 配合对抗机器人的游戏, 首先会有一个长度为 $n$ 的序列 $T$, 每个序列上由机器人规定一个 $0\ldots,k-1$ 的数字, 并且机器人会产生一个整数字 $p(0\leq p&lt;n)$, 游戏如下进行: A 先得到机器人的序列和数字 $p$, 但他能且只能选择序列上的某一个数字 $a$ , 将其变为 $(a+1)\mod{k}$.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单的偏微分方程（练习题）">
-<meta property="og:url" content="http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%89/index.html">
+<meta property="og:title" content="2020-2021 ICPC Kunming D. Competition Against a Robot">
+<meta property="og:url" content="http://inxli.cn/%E6%95%B0%E5%AD%A6/2020-2021-icpc-kunming-d-competition-against-a-robot/index.html">
 <meta property="og:site_name" content="iNx">
-<meta property="og:description" content="例题 已知微分方程 $$ \frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}&#x3D;0 $$ 有形如 $u&#x3D;\varphi(\frac{y}{x})$ 的解，试求此解．">
+<meta property="og:description" content="这场比赛爬了… 是这样一个问题: 两个人 A, B 配合对抗机器人的游戏, 首先会有一个长度为 $n$ 的序列 $T$, 每个序列上由机器人规定一个 $0\ldots,k-1$ 的数字, 并且机器人会产生一个整数字 $p(0\leq p&lt;n)$, 游戏如下进行: A 先得到机器人的序列和数字 $p$, 但他能且只能选择序列上的某一个数字 $a$ , 将其变为 $(a+1)\mod{k}$.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/2004032.jfif">
-<meta property="article:published_time" content="2020-04-03T14:15:51.000Z">
-<meta property="article:modified_time" content="2020-04-03T14:17:19.908Z">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
+<meta property="article:published_time" content="2021-04-04T11:15:06.000Z">
+<meta property="article:modified_time" content="2021-04-04T13:21:53.054Z">
 <meta property="article:author" content="iNx">
 <meta property="article:tag" content="数学">
-<meta property="article:tag" content="微分方程">
+<meta property="article:tag" content="数论">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/2004032.jfif">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
 
 
 
@@ -133,7 +133,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/2004032.jfif" alt="简单的偏微分方程（练习题）">
+            <img class="thumbnail" src="/gallery/thumbnails/200401.png" alt="2020-2021 ICPC Kunming D. Competition Against a Robot">
         </span>
     </div>
     
@@ -141,17 +141,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-03T14:15:51.000Z">2020-04-03</time>
+                <time class="level-item has-text-grey" datetime="2021-04-04T11:15:06.000Z">2021-04-04</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 282 个字)
+                    7 分钟 读完 (大约 1009 个字)
                 </span>
                 
                 
@@ -165,77 +165,59 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                简单的偏微分方程（练习题）
+                2020-2021 ICPC Kunming D. Competition Against a Robot
             
         </h1>
         <div class="content">
-            <h2 id="例题">例题</h2>
-<p>已知微分方程<br>
-$$<br>
-\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=0<br>
-$$<br>
-有形如 $u=\varphi(\frac{y}{x})$ 的解，试求此解．</p>
+            <p>这场比赛爬了…</p>
+<p>是这样一个问题: 两个人 A, B 配合对抗机器人的游戏, 首先会有一个长度为 $n$ 的序列 $T$, 每个序列上由机器人规定一个 $0\ldots,k-1$ 的数字, 并且机器人会产生一个整数字 $p(0\leq p&lt;n)$, 游戏如下进行: A 先得到机器人的序列和数字 $p$, 但他能且只能选择序列上的某一个数字 $a$ , 将其变为 $(a+1)\mod{k}$. 接下来 B 只会得到 A 操作过的序列, 他要由此猜出 $p$ 并获得胜利, 否则机器人胜利. 先给定 $n, k(n,k\leq 10^{18})$ 和 $Q(Q\leq 10^5)$ 次询问, 判断是机器人胜利还是人类.</p>
 <a id="more"></a>
-<h3 id="解">解</h3>
-<p>因为</p>
+<h2 id="弱化的一个问题">弱化的一个问题</h2>
+<p>首先可以看 3Blue1Brown 提到的一个弱化的问题: <a href="https://www.bilibili.com/video/BV1UD4y1U7or">不可能的棋盘谜题</a></p>
+<p>在这个问题中, $n = 64$ 而 $k = 2$. 其解决的方案是 A 将所有棋盘上为 $1$ 的序列下标(从 $0$ 开始)全部异或后再异或上 $p$, 然后把得到的数作为下标将棋盘上的那一位翻转. 而 B 只需要把每个为 $1$ 的序列下标异或即可得到 $p$. 这是因为 B 获得的答案可以由以下的公式给出:<br>
+$$<br>
+p = ans(T’) = \oplus_{i=0}^{63}i\times T’(i)<br>
+$$<br>
+$T’$ 是改变 $T$ 后得到的序列. 很明显, 如果 A 对 $i$ 进行操作则有:<br>
+$$<br>
+ans(T’)=ans(T)\oplus i<br>
+$$<br>
+于是只需要取 $i = p\oplus^{-1} ans(T)=p\oplus ans(T)$ 即可. 这样做可行的原因是 $\oplus$ 对 ${0\ldots,63}$ 封闭.</p>
+<p>接下来考虑本题的这个问题, 人类获得胜利的充分必要条件是 $n\mid k^n$.</p>
+<h2 id="必要性">必要性</h2>
+<p>首先我们可以发现, 机器人可以生成的序列 $T$ 有 $k^n$ 种, 其每种序列都可以通过 A 的 $n$ 种操作而转移到另外 $n$ 种序列, 而 $p$ 是多少 A 和 B 都不能事先预知, 也就是对于每个序列都要能转化到分别代表 $0,1,\ldots,n-1$ 的 $n$ 种序列. 用图论的模型进行抽象的话也就是: 有一个有 $k^n$ 个经 $n$ 种颜色染色的结点的有向图, 其每个结点都有且仅有 $n$ 个出度, 并且这 $n$ 条边对应出去的结点颜色各不相同. 我们利用算两次的原理: 对于某一种颜色的结点, 每一个结点, 一定会有一条边对应到这种颜色的节点, 这样就计算了 $k^n$ 次. 另一方面, 由出边数量等于入边数量且由于对称性知道: 每一个结点有 $n$ 条入边, 所以该种颜色结点在上一种算法中各计算了 $n$ 次, 所以该种颜色结点数量为 $\frac{k^n}{n}$. 故 $n\mid k^n$.</p>
+<h2 id="充分性">充分性</h2>
+<p>接下来证明其充分性, 也就是对于 $n\mid k^n$ 的情况, 我们要能构造出一组解使得人类获胜. 仿造前面的例子, 我们用类似方法去构造一组解.</p>
+<p>首先考虑 $k$ 为素数的情况, 此时由于 $n\mid k^n$, 故得: $n = k^t$. 由此可知对于任意的 $0,1,\ldots, n-1$, 均可以用 $t$ 位的 $k$ 进制数来表示: $i = a_{t-1}k^{t-1}+\ldots+a_0$. 定义 $a\oplus b = (a+b)\mod{k}$, $a\otimes b=a\times b\mod{k}$, $\oplus$ 的逆运算 $\ominus$ 定义为 $a\ominus b=(a-b)\mod{k}$. 定义 $ans(T)$ 的计算方法:<br>
+$$<br>
+ans(T)=\oplus_{i=0}^{n-1}(i\otimes T(i))<br>
+$$<br>
+那么为了满足 $p=ans(T’)$, 则选择某一个 $i$ 操作有:<br>
+$$<br>
+ans(T’)=ans(T)\oplus i<br>
+$$<br>
+故 $i=p\ominus ans(T)$. 若 $k=prime^{m}$, 则仍可以利用上文上述方法构造一组解. 因为若<br>
+$$<br>
+a\equiv b(\mod{m^t})\Rightarrow a\equiv b(\mod m)<br>
+$$<br>
+对于 $k=p_1^{k_1}p_2^{k_2}\ldots p_s^{k_s}$, $n = p_1^{\alpha_1}p_2^{\alpha_2}\ldots p_s^{\alpha_s}$ 的情况, 对于每一对 $(p_m,p_m^{\alpha_m})$ 构造新的序列:</p>
 
 $$
-\begin{align*}
-&\frac{\partial u}{\partial x}=-\frac{y}{x^2}\varphi'\\
-&\frac{\partial^2 u}{\partial x^2}=2\frac{y}{x^3}\varphi'+\frac{y^2}{x^4}\varphi''\\
-&\frac{\partial u}{\partial y}=\frac{1}{x}\varphi'\\
-&\frac{\partial^2 u}{\partial y^2}=\frac{1}{x^2}\varphi''
-\end{align*}
+T(m,i)=\left(\sum_{j\equiv i(\mod{p_m^{\alpha_m}})}T(j)\right)\mod{p_m^{\alpha_m}}
 $$
 
-<p>得到<br>
-$$<br>
-2\frac{y}{x^3}\varphi’+\frac{y^2}{x^4}\varphi’’+\frac{1}{x^2}\varphi’’=0<br>
-$$<br>
-很明显，两边同乘 $x^2$ 并令 $t=\frac{y}{x}$ 即可化为常微分方程<br>
-$$<br>
-2t\varphi’+(t^2+1)\varphi’’=0<br>
-$$<br>
-这是一个一阶齐次线性微分方程，其实可以看出<br>
-$$<br>
-[(t^2+1)\varphi’]’=0<br>
-$$<br>
-于是<br>
-$$<br>
-\varphi’=\frac{C_1}{t^2+1}<br>
-$$<br>
-进一步积分得到<br>
-$$<br>
-\varphi=C_1\arctan{\frac{y}{x}}+C_2<br>
-$$</p>
-<h2 id="例题-2">例题</h2>
-<p>设 $u=u(\sqrt{x^2+y^2})$ 具有连续二阶偏导数，且满足<br>
-$$<br>
-\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial x^2}-\frac{1}{x}\cdot\frac{\partial u}{\partial x}+u=x^2+y^2<br>
-$$<br>
-求 $u$．</p>
-<h3 id="解-2">解</h3>
-<p>同样的计算 $u$ 的偏导数及二阶偏导数，并令 $t=\sqrt{x^2+y^2}$ 将其化为常微分方程得：<br>
-$$<br>
-u’’+u=t^2<br>
-$$<br>
-其齐次通解为<br>
-$$<br>
-C_1\cos t+C_2\sin t<br>
-$$<br>
-容易求得一个特解<br>
-$$<br>
-y_p=t^2-2<br>
-$$<br>
-将 $t=\sqrt{x^2+y^2}$ 代入即可．</p>
+<p>然后利用上面的方法, 构造一个解 $i’_{m}$. 满足 $ans(T’(m))\equiv p(\mod{p_m^{\alpha_m}})$, 最后利用中国剩余定理知这两个不定方程组均有解, 则 A 解出 $i$ 并将其在模 $k$ 意义下加 $1$, 最后 B 通过计算 $ans(T’(m))$ 解得 $p$.</p>
+<p>证毕.</p>
+<h2 id="实现">实现</h2>
+<p>直接利用快速幂即可. 时间复杂度: $O(Q\log n)$.</p>
 
         </div>
         
                     <ul class="post-copyright">
-                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%89/">简单的偏微分方程（练习题）</a></li>
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E6%95%B0%E5%AD%A6/2020-2021-icpc-kunming-d-competition-against-a-robot/">2020-2021 ICPC Kunming D. Competition Against a Robot</a></li>
                     <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
-                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%89/">http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%89/</a></li>
-                    <li><strong>发布时间：</strong>2020-04-03</li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E6%95%B0%E5%AD%A6/2020-2021-icpc-kunming-d-competition-against-a-robot/">http://inxli.cn/%E6%95%B0%E5%AD%A6/2020-2021-icpc-kunming-d-competition-against-a-robot/</a></li>
+                    <li><strong>发布时间：</strong>2021-04-04</li>
                     <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                 </li>
                 </ul>
@@ -245,7 +227,7 @@ $$<br>
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" rel="tag">微分方程</a>, <a class="has-link-grey -link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a>
+                    <a class="has-link-grey -link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a>, <a class="has-link-grey -link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>
                 </div>
             </div>
         </div>
@@ -275,17 +257,10 @@ $$<br>
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/%E5%AD%97%E7%AC%A6%E4%B8%B2/kmp%E7%AE%97%E6%B3%95/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">KMP算法</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/">
-                <span class="level-item">ODE常微分方程的微分算子法（1）</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/%E6%95%B0%E5%AD%A6/2020-2021-icpc-nanjing-f-fireworks/">
+                <span class="level-item">2020-2021 ICPC Nanjing F.Fireworks</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -442,22 +417,22 @@ $$<br>
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#例题">
+        <a class="is-flex" href="#弱化的一个问题">
         <span class="has-mr-6">1</span>
-        <span>例题</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#解">
-        <span class="has-mr-6">1.1</span>
-        <span>解</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#例题-2">
+        <span>弱化的一个问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#必要性">
         <span class="has-mr-6">2</span>
-        <span>例题</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#解-2">
-        <span class="has-mr-6">2.1</span>
-        <span>解</span>
-        </a></li></ul></li></ul>
+        <span>必要性</span>
+        </a></li><li>
+        <a class="is-flex" href="#充分性">
+        <span class="has-mr-6">3</span>
+        <span>充分性</span>
+        </a></li><li>
+        <a class="is-flex" href="#实现">
+        <span class="has-mr-6">4</span>
+        <span>实现</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
