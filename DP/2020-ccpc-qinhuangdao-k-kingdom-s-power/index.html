@@ -7,23 +7,25 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>取值范围 - iNx</title>
+<title>2020 CCPC Qinhuangdao K. Kingdom&#39;s Power - iNx</title>
 
 
-    <meta name="description" content="题目 函数 $f(x)&#x3D;\sqrt{2x-x^2}+x$ 的值域为____．  思考ing…">
+    <meta name="description" content="K. Kingdom’s Power 最近发现很多题目似乎都很类似… 这又是一道当时比赛时爬了半天最后还是不会的题目…">
 <meta property="og:type" content="article">
-<meta property="og:title" content="取值范围">
-<meta property="og:url" content="http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/index.html">
+<meta property="og:title" content="2020 CCPC Qinhuangdao K. Kingdom&#39;s Power">
+<meta property="og:url" content="http://inxli.cn/DP/2020-ccpc-qinhuangdao-k-kingdom-s-power/index.html">
 <meta property="og:site_name" content="iNx">
-<meta property="og:description" content="题目 函数 $f(x)&#x3D;\sqrt{2x-x^2}+x$ 的值域为____．  思考ing…">
+<meta property="og:description" content="K. Kingdom’s Power 最近发现很多题目似乎都很类似… 这又是一道当时比赛时爬了半天最后还是不会的题目…">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200402.jfif">
-<meta property="article:published_time" content="2020-04-02T08:55:22.000Z">
-<meta property="article:modified_time" content="2020-04-08T09:28:39.643Z">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/sakura.jpg">
+<meta property="article:published_time" content="2021-04-07T02:56:55.000Z">
+<meta property="article:modified_time" content="2021-04-07T03:20:02.851Z">
 <meta property="article:author" content="iNx">
-<meta property="article:tag" content="数学">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="Tree DP">
+<meta property="article:tag" content="贪心">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/200402.jfif">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/sakura.jpg">
 
 
 
@@ -132,7 +134,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/200402.jfif" alt="取值范围">
+            <img class="thumbnail" src="/gallery/thumbnails/sakura.jpg" alt="2020 CCPC Qinhuangdao K. Kingdom&#39;s Power">
         </span>
     </div>
     
@@ -140,17 +142,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-02T08:55:22.000Z">2020-04-02</time>
+                <time class="level-item has-text-grey" datetime="2021-04-07T02:56:55.000Z">2021-04-07</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+                <a class="has-link-grey -link" href="/categories/DP/">DP</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 198 个字)
+                    4 分钟 读完 (大约 622 个字)
                 </span>
                 
                 
@@ -164,64 +166,44 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                取值范围
+                2020 CCPC Qinhuangdao K. Kingdom&#39;s Power
             
         </h1>
         <div class="content">
-            <h1>题目</h1>
-<p>函数 $f(x)=\sqrt{2x-x^2}+x$ 的值域为____．</p>
-<hr>
-<p>思考ing…</p>
-<hr>
+            <h2 id="K-Kingdom’s-Power"><a href="https://codeforc.es/gym/102769/problem/K">K. Kingdom’s Power</a></h2>
+<p>最近发现很多题目似乎都很类似… 这又是一道当时比赛时爬了半天最后还是不会的题目…</p>
 <a id="more"></a>
-<h1>分析与解答</h1>
-<h2 id="解法一-三角换元">解法一 三角换元</h2>
-<p>注意到<br>
-$$<br>
-\sqrt{2x-x^2}=\sqrt{1-(x-1)^2}<br>
-$$<br>
-所以设 $x-1=\sin \alpha(\alpha\in[-\frac{\pi}{2},\frac{\pi}{2}])$，则 $f(x)=\cos\alpha+(1+\sin\alpha)$．于是</p>
+<h3 id="solution">solution</h3>
+<ul>
+<li>首先对于每个需要占领的点, 都有两种方式:
+<ul>
+<li>将已经占领过别的点的军队转移到此处;</li>
+<li>从根节点重新派遣一支新的军队.</li>
+</ul>
+</li>
+<li>可以发现利用第二种方式是由于已经存在的军队到当前结点的距离小于根节点到当前结点的距离. 并且由此做简单的逻辑推导可以发现: 对于某一个结点的子树, 用于第二种方式的军队最多只会有一支. 并且总是从深度浅的到深度深的, 最后这支军队会到达该树最深处(满足不需要从根节点重新派遣的前提下的最深处). 这也就是贪心的做法.</li>
+<li>考虑动态规划: 用 $f[u]$ 表示当前结点 $u$ 有一支军队, 接着要征服其子树需要多少时间. 那么我们将其子树按照最深深度由浅到深排序. 那么每次合并一个子树, 都要考虑是要从上个子树的最深处还是要从根节点的军队派遣一个到节点上, 所以记录上一子树的最深深度(为什么不考虑用于第二种方式的军队到达的最深处?)来更新这个状态的一个初始代价 $cost[v]$. 则有:</li>
+</ul>
 
 $$
-\begin{align*}
-f(x)&=1+\sin\alpha+\cos\alpha\\
-&=1+\sqrt{2}\sin(\alpha+\frac{\pi}{4})\\
-&\in[0,\sqrt{2}+1]
-\end{align*}
+f[u]=\sum_{v\in son(u)}(f[v]+cost[v])
 $$
 
-
-<h2 id="解法二-柯西不等式">解法二 柯西不等式</h2>
-<p>因为<br>
-$$<br>
-1-(x-1)^2\geq0\Rightarrow x\in[0,2]<br>
-$$<br>
-所以 $f(x)\geq 0$，并且注意到，当 $x=0$ 时<br>
-$$<br>
-f(1)=0<br>
-$$<br>
-即 $f(x)$ 最小值为 $0$．</p>
-<p>另一方面，由柯西不等式</p>
-
-$$
-\begin{align*}
-f(x)&=\sqrt{1-(x-1)^2}+x-1+1\\
-&\leq\sqrt{(1-(x-1)^2+(x-1)^2)(1+1)}+1\\
-&=\sqrt{2}+1
-\end{align*}
-$$
-
-
-<h1>题外话</h1>
-<p>对于有根式和正常多项式的问题，三角和柯西不等式往往都能解决．可以权衡一下，找到更适合自己的方法．</p>
+<ul>
+<li>时间复杂度: $O(n\log n)$.</li>
+</ul>
+<h3 id="code">code</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">1e6</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> dp[MAX_N], dep[MAX_N], mh[MAX_N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; e[MAX_N];</span><br><span class="line"><span class="keyword">int</span> T, n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x, <span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mh[x] &lt; mh[y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    e[u].push_back(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    mh[u] = dep[u];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; e[u].<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = e[u][i];</span><br><span class="line">        dep[v] = dep[u] + <span class="number">1</span>;</span><br><span class="line">        dfs(v);</span><br><span class="line">        mh[u] = <span class="built_in">max</span>(mh[u], mh[v]);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(e[u].<span class="built_in">begin</span>(), e[u].<span class="built_in">end</span>(), cmp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree_dp</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cost = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; e[u].<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = e[u][i];</span><br><span class="line">        cost = <span class="built_in">min</span>(cost, dep[v]);</span><br><span class="line">        tree_dp(v);</span><br><span class="line">        dp[u] += dp[v] + cost;</span><br><span class="line">        cost = mh[v] - dep[u] + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> cas = <span class="number">1</span>; cas &lt;= T; ++cas) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) e[i].<span class="built_in">clear</span>(), dp[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> f;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;f);</span><br><span class="line">            add(f, i);</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(<span class="number">1</span>);</span><br><span class="line">        tree_dp(<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case #%lld: %lld\n"</span>, cas, dp[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="end">end</h3>
+<p>我不能再爬了, 抓紧时间学学 CS: APP 等有用的东西吧…</p>
 
         </div>
         
                     <ul class="post-copyright">
-                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/">取值范围</a></li>
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/DP/2020-ccpc-qinhuangdao-k-kingdom-s-power/">2020 CCPC Qinhuangdao K. Kingdom&#39;s Power</a></li>
                     <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
-                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/">http://inxli.cn/%E7%BB%83%E4%B9%A0%E9%A2%98/%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/</a></li>
-                    <li><strong>发布时间：</strong>2020-04-02</li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/DP/2020-ccpc-qinhuangdao-k-kingdom-s-power/">http://inxli.cn/DP/2020-ccpc-qinhuangdao-k-kingdom-s-power/</a></li>
+                    <li><strong>发布时间：</strong>2021-04-07</li>
                     <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                 </li>
                 </ul>
@@ -231,7 +213,7 @@ $$
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a>
+                    <a class="has-link-grey -link" href="/tags/DP/" rel="tag">DP</a>, <a class="has-link-grey -link" href="/tags/Tree-DP/" rel="tag">Tree DP</a>, <a class="has-link-grey -link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a>
                 </div>
             </div>
         </div>
@@ -261,17 +243,10 @@ $$
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/%E6%95%B0%E5%AD%A6/ode%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E6%B3%95%EF%BC%881%EF%BC%89/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">ODE常微分方程的微分算子法（1）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/%E6%95%B0%E5%AD%A6/%E6%A0%B9%E5%BC%8F%E6%9C%89%E7%90%86%E5%8C%96/">
-                <span class="level-item">根式有理化</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/DP/2020-2021-icpc-kunming-g-gift/">
+                <span class="level-item">2020-2021 ICPC Kunming G. Gift</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -428,26 +403,22 @@ $$
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#K-Kingdom’s-Power">
         <span class="has-mr-6">1</span>
-        <span>题目</span>
-        </a></li><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">2</span>
-        <span>分析与解答</span>
+        <span>K. Kingdom’s Power</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#解法一-三角换元">
-        <span class="has-mr-6">2.1</span>
-        <span>解法一 三角换元</span>
+        <a class="is-flex" href="#solution">
+        <span class="has-mr-6">1.1</span>
+        <span>solution</span>
         </a></li><li>
-        <a class="is-flex" href="#解法二-柯西不等式">
-        <span class="has-mr-6">2.2</span>
-        <span>解法二 柯西不等式</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">3</span>
-        <span>题外话</span>
-        </a></li></ul>
+        <a class="is-flex" href="#code">
+        <span class="has-mr-6">1.2</span>
+        <span>code</span>
+        </a></li><li>
+        <a class="is-flex" href="#end">
+        <span class="has-mr-6">1.3</span>
+        <span>end</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
