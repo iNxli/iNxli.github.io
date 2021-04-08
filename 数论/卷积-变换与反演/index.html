@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://inxli.cn/gallery/thumbnails/akai.jpg">
 <meta property="article:published_time" content="2021-04-08T13:47:36.000Z">
-<meta property="article:modified_time" content="2021-04-08T16:02:57.019Z">
+<meta property="article:modified_time" content="2021-04-08T16:09:31.710Z">
 <meta property="article:author" content="iNx">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="数论">
@@ -152,7 +152,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 分钟 读完 (大约 1913 个字)
+                    13 分钟 读完 (大约 1921 个字)
                 </span>
                 
                 
@@ -233,12 +233,15 @@ $$
 <h3 id="代数性质">代数性质</h3>
 <ol>
 <li>简单利用配对的思想即可证明 $*$ 具有<strong>交换律</strong>.</li>
-<li>可以证明: $f<em>g</em>h=\sum_{abc=n}f(a)f(b)f©=f*(g*h)$. 故其具有<strong>结合律</strong>.</li>
+<li>可以证明: $f*g*h=\sum_{abc=n}f(a)f(b)f(c)=f*(g*h)$ . 故其具有<strong>结合律</strong>.</li>
 </ol>
-<p>另外容易发现有单位元 $I$ 使得:<br>
-$$<br>
-f<em>I=I</em>f=f<br>
-$$</p>
+<p>另外容易发现有单位元 $I$ 使得:</p>
+
+$$
+f*I=I*f=f
+$$
+
+
 <h3 id="莫比乌斯变换">莫比乌斯变换</h3>
 <p>对于含有一个特殊函数常数函数 $u$ 的卷积:<br>
 $$<br>
@@ -260,11 +263,13 @@ $$
 $$<br>
 I=\mu * u<br>
 $$<br>
-也就是说 $u$ 是 $\mu$ 的逆元. 事实上可以证明, 所有数论函数在所有数论函数构成的集合 $G$ 中都能找到其逆元. 也就是 $&lt;G, <em>&gt;$ 实际上构成了一个 Abel 群. 由上一个等式, 我们可以引出另一种变换, 也就是莫比乌斯反变换, 或称为莫比乌斯反演:<br>
-$$<br>
-F=f</em>u\Rightarrow f=F*\mu<br>
-$$<br>
-利用前文所述性质即可简单证明.</p>
+也就是说 $u$ 是 $\mu$ 的逆元. 事实上可以证明, 所有数论函数在所有数论函数构成的集合 $G$ 中都能找到其逆元. 也就是 $<G, *>$ 实际上构成了一个 Abel 群. 由上一个等式, 我们可以引出另一种变换, 也就是莫比乌斯反变换, 或称为莫比乌斯反演:</p>
+
+$$
+F=f*u\Rightarrow f=F*\mu
+$$
+
+<p>利用前文所述性质即可简单证明.</p>
 <p>我们知道:<br>
 $$<br>
 n=\sum_{d\mid n}\varphi(d)<br>
