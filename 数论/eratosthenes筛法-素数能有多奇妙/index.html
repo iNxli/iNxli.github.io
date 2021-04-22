@@ -7,25 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>PE#540 - iNx</title>
+<title>Eratosthenes筛法: 素数能有多奇妙 - iNx</title>
 
 
-    <meta name="description" content="Counting primitive Pythagorean triples">
+    <meta name="description" content="…">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PE#540">
-<meta property="og:url" content="http://inxli.cn/PE/pe-540/index.html">
+<meta property="og:title" content="Eratosthenes筛法: 素数能有多奇妙">
+<meta property="og:url" content="http://inxli.cn/%E6%95%B0%E8%AE%BA/eratosthenes%E7%AD%9B%E6%B3%95-%E7%B4%A0%E6%95%B0%E8%83%BD%E6%9C%89%E5%A4%9A%E5%A5%87%E5%A6%99/index.html">
 <meta property="og:site_name" content="iNx">
-<meta property="og:description" content="Counting primitive Pythagorean triples">
+<meta property="og:description" content="…">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/akai2.jpg">
-<meta property="article:published_time" content="2021-04-14T14:49:40.000Z">
-<meta property="article:modified_time" content="2021-04-14T15:05:53.576Z">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/%E5%AF%92%E9%A3%9F%E5%B8%96.jpg">
+<meta property="article:published_time" content="2021-04-21T12:50:55.000Z">
+<meta property="article:modified_time" content="2021-04-22T11:31:47.283Z">
 <meta property="article:author" content="iNx">
 <meta property="article:tag" content="数论">
-<meta property="article:tag" content="Moebius transform">
-<meta property="article:tag" content="PE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/akai2.jpg">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/%E5%AF%92%E9%A3%9F%E5%B8%96.jpg">
 
 
 
@@ -134,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/akai2.jpg" alt="PE#540">
+            <img class="thumbnail" src="/gallery/thumbnails/%E5%AF%92%E9%A3%9F%E5%B8%96.jpg" alt="Eratosthenes筛法: 素数能有多奇妙">
         </span>
     </div>
     
@@ -142,17 +140,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-04-14T14:49:40.000Z">2021-04-14</time>
+                <time class="level-item has-text-grey" datetime="2021-04-21T12:50:55.000Z">2021-04-21</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/PE/">PE</a>
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E8%AE%BA/">数论</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 453 个字)
+                    12 分钟 读完 (大约 1747 个字)
                 </span>
                 
                 
@@ -166,44 +164,125 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                PE#540
+                Eratosthenes筛法: 素数能有多奇妙
             
         </h1>
         <div class="content">
-            <h2 id="Counting-primitive-Pythagorean-triples"><a href="https://projecteuler.net/problem=540">Counting primitive Pythagorean triples</a></h2>
+            <p>…</p>
 <a id="more"></a>
-<h3 id="Solution">Solution</h3>
-<p>想了一个很爬的 $O(\sqrt{n}\log n)$ 的做法.</p>
-<p>注意到本原勾股数的通解: 就是要找 $u, v$ 满足 $(u, v)=1$ 平方和小于等于 $n$ 且 $u, v$ 不同奇偶的组数.</p>
-<p>所以就是计算:</p>
+<h2 id="引言">引言</h2>
+<p>刚接触素数的定义, 便有了问题: 如何判断一个数是不是素数以及怎么获得一个区间内的素数. 古希腊学者Eratosthenes发明了一个获取区间素数的方法, 其亦出现在笔者的小学课本中.</p>
+<p>方法是这样的, 把要生成素数的区间 $1,2,\ldots,n$ 按顺序排列写成一张表. 先把 $1$ 去掉, 从 $2$ 开始, 由小至大, 若当前数未被划去, 则其是一个素数, 然后将其所有倍数在数表中划去, 最后表中未被划去的所有数即为此区间的所有素数.</p>
+<p>这样做的原因是什么呢? 其实判断一个数是否为素数和获得区间内的素数是不太一样的, 显然第一个问题解决亦解决了第二个问题, 但是朴素判断一个数是不是素数的复杂度是 $O(\sqrt{n})$ 的, 将其用于第二个问题将使得问题解决需要 $O(n\sqrt{n})$. 而素数是不能有非平凡的因子的, 而合数的因子必然在比它小的位置出现, 也就是说既然素数不是这么好判断, 那么就将合数全部排除算了. 故曰: 筛法.</p>
+<p>但是其实很多人都知道Eratosthenes筛法(下称埃氏筛)复杂度并不是非常优秀. 首先这样的一个算法看上去显然是有 $O(n\log n)$ 的, 而大家所熟知的欧拉线性筛是 $O(n)$ 的. 但实际情况是埃氏筛是 $O(n\log \log n)$ 的, 并且基于这样一个&quot;筛&quot;的想法可以引出一些适用于其他问题的好方法, 例如求一个大区间内素数函数和.</p>
+<h2 id="改良与素数函数前缀和的计算">改良与素数函数前缀和的计算</h2>
+<p>可以发现, 一个数如果是合数, 必然有一个小于等于其平方根的素数, 所以我们只需要在 $\sqrt{n}$ 下进行埃氏筛即可. 而如果只是要求一个素数函数的前缀和而不是具体是哪些素数的话, 则可以有更优的方法. 记素数函数(一个多项式函数, 易于直接求解前缀和) $f(n)$, 记 $g(n,j)$ 定义如下:</p>
 
 $$
-\sum_{u=1}^{\sqrt{n}}\sum_{v=1}^{\min{(u, \sqrt{n-u^2})}}[(u,v)=1{and} 2\nmid (u-v)]
+g(n,j)=\sum_{i=1}^{n}[i\in P\text{或i的最小素因子}>p_j]
 $$
 
-<p>依据 $v$ 的上限分成两部分处理: $u, \sqrt{n-u^2}$.</p>
-<p>对于第一种情况: 类似于求解欧拉函数, 但是奇数情况有所不同, 就是与其互素且是奇数的不能计算在内. 也就是计算偶数且与其互素的, 也就是求 $u/2$ 以下的与其互素的数个数, 根据: $(i,u)=(u-i,u)$ 知这部分答案为: $\varphi(u)/2$.</p>
-<p>对于第二部分: 记 $k=\sqrt{n-u^2}$,</p>
+<p>$P$ 是素数集合, $p_j$ 表示第 $j$ 个素数. 那么我们所要求的就是 $g(n, \vert P\vert)$. 这样做的目的就是想要利用埃氏筛的思想, 用前 $\sqrt{n}$ 的素数去将后面的合数筛去. 其具体的转移是这样的, 如果 $p_j^2&gt;n$, 那么 $g(n,j)=g(n,j-1)$. 这是因为有 $p_j$ 这个素因子的合数必然有一个比 $p_j$ 更小的, 那么在 $j$ 此前已被筛去, 所以在这一步没有多余的操作. 而对于 $p_j^2\leq n$ 的情况, 就需要把以 $p_j$ 为最小素因子的数筛去. 而这些数源于何处? 因为是最小的素因子, 故可以将 $p_j$ 除掉然后在剩下的数中找寻最小素因子大于 $p_{j-1}$ 的数, 其再乘上 $p_j$ 即为要筛去的数. 而这是什么? 这就是: $g(n/p_{j},j-1)$! 但是其实还有点问题, 那就是 $g(n/p_j,j-1)$ 不止有那些最小素因子大于 $p_{j-1}$ 的还有一些比 $p_j$ 小的素数, 这些显然不能被一起考虑在内. 所以转移应该是:</p>
+
+$$
+g(n,j)=g(n,j-1)-f(p_j)\left(g(\frac{n}{p_j},j-1)-\sum_{i=1}^{j-1}f(p_i)\right)
+$$
+
+<p>此处 $f(n)=n^k$, 对于一般的多项式就是多算几次, 然后合并就可以了. 并且注意到所以被用到的 $g(n’,j)$ 中 $n’=\lfloor\frac{n}{i}\rfloor$, 所以只有 $O(\sqrt n)$ 种, 而 $j$ 这一维可以用滚动数组&quot;滚掉&quot;. 利用素数分布的结果可以知道这个算法复杂度是: $O(\frac{n}{\log n})$, 这其实也就是 min_25 筛的第一步.</p>
+<h2 id="复杂度的证明">复杂度的证明</h2>
+<p>可以直接看论文: <a href="http://inxli.cn/file/Merten's-Theorem.pdf">Merten’s Theorem</a></p>
+<p>天才数学家Merten证明了:</p>
+
+$$
+\sum_{p\leq x}\frac{1}{p}=\ln\ln[x]+\gamma+\sum_{m=2}^{\infty}\mu(m)\frac{\ln(\zeta(m))}{m}+\delta
+$$
+
+<p>而仅想证明埃氏筛复杂度是 $O(n\log \log n)$ 的话只需要知道素数倒数和与 $\log \log n$ 是同阶的就可以了.</p>
+<h3 id="阿贝尔分部求和">阿贝尔分部求和</h3>
+<p>首先简单说一下阿贝尔分部求和公式, 若有整数函数 $a(i)$ 和可导函数 $f(i)$, 而 $A(x):=\sum_{i\leq x}a(i)$, 那么有:</p>
 
 $$
 \begin{align*}
-\sum_{i=1}^{k}[(i,u)=1]&=\sum_{i=1}^{k}\sum_{t\mid i\\ t\mid u}\mu{(t)}\\
-&=\sum_{t\mid u}\sum_{i=1}^{k}[t\mid i]\\
-&=\sum_{t\mid u}\mu(t)\lfloor \frac{k}{t}\rfloor
+a(i)f(i)&=A(i)f(i)-A(i-1)f(i)\\
+&=A(i)f(i)-A(i-1)f(i-1)+A(i-1)(f(i)-f(i-1))\\
+&=A(i)f(i)-A(i-1)f(i-1)+\int_{i-1}^{i}A(t)f'(t)\mathrm{d}t
 \end{align*}
 $$
 
-<p>对于 $u$ 为奇数的情况, 式子中的 $k$ 应当为 $k/2$, 所以预处理一下卷积即可.</p>
-<h3 id="Code">Code</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">6e7</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> pri[MAX_N], phi[MAX_N], f[MAX_N], mu[MAX_N];</span><br><span class="line"><span class="keyword">int</span> n, cnt, ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Euler</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    phi[<span class="number">1</span>] = mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!phi[i]) &#123;</span><br><span class="line">            pri[++cnt] = i;</span><br><span class="line">            phi[i] = i - <span class="number">1</span>;</span><br><span class="line">            mu[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; <span class="number">1l</span>l * i * pri[j] &lt;= <span class="number">1l</span>l * n; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i % pri[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                phi[i * pri[j]] = phi[i] * pri[j];</span><br><span class="line">                mu[i * pri[j]] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            phi[i * pri[j]] = phi[i] * (pri[j] - <span class="number">1</span>);</span><br><span class="line">            mu[i * pri[j]] = -mu[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n);</span><br><span class="line">    Euler(<span class="number">6e7</span>);</span><br><span class="line">    <span class="keyword">int</span> sqr = (<span class="keyword">int</span>)<span class="built_in">sqrt</span>(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">1</span>; u &lt;= sqr; ++u) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = u; i &lt;= sqr; i += u) &#123;</span><br><span class="line">            <span class="keyword">int</span> k = <span class="built_in">sqrt</span>(n - i * i);</span><br><span class="line">            <span class="keyword">if</span> (i &amp; <span class="number">1</span>) &#123;</span><br><span class="line">                f[i] += k / <span class="number">2</span> / u * mu[u];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                f[i] += k / u * mu[u];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">2</span>; i * i &lt;= n / <span class="number">2</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &amp; <span class="number">1</span>) &#123;</span><br><span class="line">            ans += phi[i] / <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ans += phi[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> ( ; i * i &lt;= n; ++i) &#123;</span><br><span class="line">        ans += f[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>两边同时求和即得到:<br>
+$$<br>
+\sum_{y&lt;i\leq x} a(i)f(i)=A(x)f(x)-A(y)f(y)-\int_{y}^xA(t)f’(t)\mathrm{d}t<br>
+$$<br>
+此即为阿贝尔分部求和公式, 其实也就是分部积分的离散形式.</p>
+<h3 id="证明的第一个途径">证明的第一个途径</h3>
+<p>简单的, 可以令:</p>
+
+$$
+a(i):=
+\begin{cases}
+1,i=p\\
+0,others
+\end{cases}
+$$
+
+<p>而 $f(i):=\frac{1}{i}$, 利用阿贝尔求和公式:<br>
+$$<br>
+\sum_{p\leq x}\frac{1}{p}=\frac{\pi(x)}{x}+\int_{2}^{x}\frac{\pi(t)}{t^2}\mathrm{d}t<br>
+$$<br>
+我们知道当 $x$ 很大的时候有: $\pi(x)\sim \frac{x}{\log x}$, 所以上面的阶数大致就是:<br>
+$$<br>
+\int_{2}^{x}\frac{1}{t\log t}\mathrm{d}t=\log \log x<br>
+$$<br>
+但还有一种更加&quot;精确&quot;的方法, 令:</p>
+
+$$
+a(i):=
+\begin{cases}
+\frac{\ln p}{p},i=p\\
+0,others
+\end{cases}
+$$
+
+<p>而 $f(i):=\frac{1}{\ln i}$, 那么有:<br>
+$$<br>
+\sum_{p\leq x}\frac{1}{p}=\frac{A(x)}{\ln x}+\int_{2}^x\frac{A(t)}{t(\ln t)^2}\mathrm{d}t<br>
+$$<br>
+而天才数学家Merten又证明了一下引理:<br>
+$$<br>
+\sum_{p\leq x}\frac{\ln p}{p}=\ln x+R(x)<br>
+$$<br>
+其中余项 $\vert R(x)\vert &lt;2$! 由此得到的界会比上一种方法来得&quot;紧&quot;. 当然这和我们考虑的复杂度没有太大关系. 由此:</p>
+
+$$
+\begin{align*}
+\sum_{p\leq x}\frac{1}{p}&=\frac{\ln x+R(x)}{\ln x}+\int_{2}^{x}\frac{\ln t+R(t)}{t\ln^2 t}\mathrm{d}t\\
+&=1+\frac{R(x)}{\ln x}+\ln\ln x-\ln\ln 2 +\int_{2}^x\frac{R(t)}{t\ln^2 t}\mathrm{d}t-\int_{x}^{\infty}\frac{R(t)}{t\ln^2 t}\mathrm{d}t\\
+&=\ln\ln x+B+\delta
+\end{align*}
+$$
+
+<p>其中, $B=1-\ln \ln 2+\int_{2}^{\infty}\frac{R(t)}{t\ln^2t}\mathrm{d}t$, 是一个常数, 而:<br>
+$$<br>
+\delta=\frac{R(x)}{\ln x}-\int_{x}^{\infty}\frac{R(t)}{t\ln^2t}\mathrm{d}t<br>
+$$<br>
+并且由 $\vert R(x)\vert &lt;2$ 可以知道: $\vert \delta\vert&lt;\frac{4}{\ln x}$.</p>
+<h3 id="证明的第二个途径">证明的第二个途径</h3>
+<p>参考<a href="https://oi-wiki.org/math/sieve/">OI Wiki: 筛法</a>.</p>
+<p>个人感觉不是非常严谨, 利用的是:<br>
+$$<br>
+\sum_{i=1}^{\infty}\frac{1}{i}=\prod_{p}\frac{p}{p-1}<br>
+$$<br>
+这当然又是天才欧拉的结论.</p>
+<h2 id="结语">结语</h2>
+<p>其实越是经典的东西, 越是犀利, 越是值得思考与回味. 可能不只是学科如此, 可能许多人事亦是如此吧.</p>
 
         </div>
         
                     <ul class="post-copyright">
-                    <li><strong>本文标题：</strong><a href="http://inxli.cn/PE/pe-540/">PE#540</a></li>
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E6%95%B0%E8%AE%BA/eratosthenes%E7%AD%9B%E6%B3%95-%E7%B4%A0%E6%95%B0%E8%83%BD%E6%9C%89%E5%A4%9A%E5%A5%87%E5%A6%99/">Eratosthenes筛法: 素数能有多奇妙</a></li>
                     <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
-                    <li><strong>本文链接：</strong><a href="http://inxli.cn/PE/pe-540/">http://inxli.cn/PE/pe-540/</a></li>
-                    <li><strong>发布时间：</strong>2021-04-14</li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E6%95%B0%E8%AE%BA/eratosthenes%E7%AD%9B%E6%B3%95-%E7%B4%A0%E6%95%B0%E8%83%BD%E6%9C%89%E5%A4%9A%E5%A5%87%E5%A6%99/">http://inxli.cn/%E6%95%B0%E8%AE%BA/eratosthenes%E7%AD%9B%E6%B3%95-%E7%B4%A0%E6%95%B0%E8%83%BD%E6%9C%89%E5%A4%9A%E5%A5%87%E5%A6%99/</a></li>
+                    <li><strong>发布时间：</strong>2021-04-21</li>
                     <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                 </li>
                 </ul>
@@ -213,7 +292,7 @@ $$
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Moebius-transform/" rel="tag">Moebius transform</a>, <a class="has-link-grey -link" href="/tags/PE/" rel="tag">PE</a>, <a class="has-link-grey -link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>
+                    <a class="has-link-grey -link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>
                 </div>
             </div>
         </div>
@@ -244,16 +323,16 @@ $$
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/%E6%95%B0%E8%AE%BA/%E5%9C%86%E5%86%85%E6%95%B4%E7%82%B9-%E6%9C%AC%E5%8E%9F%E5%8B%BE%E8%82%A1%E6%95%B0-%E5%8B%BE%E8%82%A1%E6%95%B0/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/CF/cf-round-717-div-2/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">圆内整点, 本原勾股数, 勾股数</span>
+                <span class="level-item">CF Round #717(Div.2)</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/educational-codeforces-round-107-e/">
-                <span class="level-item">Educational Codeforces Round#107 E</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/%E6%95%B0%E8%AE%BA/sdoi-2014-%E6%95%B0%E8%A1%A8/">
+                <span class="level-item">SDOI 2014 数表</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -410,18 +489,34 @@ $$
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Counting-primitive-Pythagorean-triples">
+        <a class="is-flex" href="#引言">
         <span class="has-mr-6">1</span>
-        <span>Counting primitive Pythagorean triples</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Solution">
-        <span class="has-mr-6">1.1</span>
-        <span>Solution</span>
+        <span>引言</span>
         </a></li><li>
-        <a class="is-flex" href="#Code">
-        <span class="has-mr-6">1.2</span>
-        <span>Code</span>
-        </a></li></ul></li></ul>
+        <a class="is-flex" href="#改良与素数函数前缀和的计算">
+        <span class="has-mr-6">2</span>
+        <span>改良与素数函数前缀和的计算</span>
+        </a></li><li>
+        <a class="is-flex" href="#复杂度的证明">
+        <span class="has-mr-6">3</span>
+        <span>复杂度的证明</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#阿贝尔分部求和">
+        <span class="has-mr-6">3.1</span>
+        <span>阿贝尔分部求和</span>
+        </a></li><li>
+        <a class="is-flex" href="#证明的第一个途径">
+        <span class="has-mr-6">3.2</span>
+        <span>证明的第一个途径</span>
+        </a></li><li>
+        <a class="is-flex" href="#证明的第二个途径">
+        <span class="has-mr-6">3.3</span>
+        <span>证明的第二个途径</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#结语">
+        <span class="has-mr-6">4</span>
+        <span>结语</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
