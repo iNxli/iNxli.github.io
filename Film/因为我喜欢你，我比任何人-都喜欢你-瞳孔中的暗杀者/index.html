@@ -7,24 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Broadcast Stations - iNx</title>
+<title>因为我喜欢你，我比任何人 都喜欢你: 瞳孔中的暗杀者 - iNx</title>
 
 
-    <meta name="description" content="题目链接">
+    <meta name="description" content="发现早期的柯南剧场版构思总是十分细腻，首尾呼应，暗藏伏笔。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Broadcast Stations">
-<meta property="og:url" content="http://inxli.cn/%E5%9B%BE%E8%AE%BA/broadcast-stations/index.html">
+<meta property="og:title" content="因为我喜欢你，我比任何人 都喜欢你: 瞳孔中的暗杀者">
+<meta property="og:url" content="http://inxli.cn/Film/%E5%9B%A0%E4%B8%BA%E6%88%91%E5%96%9C%E6%AC%A2%E4%BD%A0%EF%BC%8C%E6%88%91%E6%AF%94%E4%BB%BB%E4%BD%95%E4%BA%BA-%E9%83%BD%E5%96%9C%E6%AC%A2%E4%BD%A0-%E7%9E%B3%E5%AD%94%E4%B8%AD%E7%9A%84%E6%9A%97%E6%9D%80%E8%80%85/index.html">
 <meta property="og:site_name" content="iNx">
-<meta property="og:description" content="题目链接">
+<meta property="og:description" content="发现早期的柯南剧场版构思总是十分细腻，首尾呼应，暗藏伏笔。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
-<meta property="article:published_time" content="2021-03-29T11:02:44.000Z">
-<meta property="article:modified_time" content="2021-04-01T08:59:03.434Z">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/conan3.jfif">
+<meta property="article:published_time" content="2021-04-22T15:27:50.000Z">
+<meta property="article:modified_time" content="2021-04-22T16:32:09.683Z">
 <meta property="article:author" content="iNx">
-<meta property="article:tag" content="DP">
-<meta property="article:tag" content="Tree DP">
+<meta property="article:tag" content="Film">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/conan3.jfif">
 
 
 
@@ -133,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/200401.png" alt="Broadcast Stations">
+            <img class="thumbnail" src="/gallery/thumbnails/conan3.jfif" alt="因为我喜欢你，我比任何人 都喜欢你: 瞳孔中的暗杀者">
         </span>
     </div>
     
@@ -141,17 +140,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-03-29T11:02:44.000Z">2021-03-29</time>
+                <time class="level-item has-text-grey" datetime="2021-04-22T15:27:50.000Z">2021-04-22</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a>
+                <a class="has-link-grey -link" href="/categories/Film/">Film</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 417 个字)
+                    12 分钟 读完 (大约 1752 个字)
                 </span>
                 
                 
@@ -165,36 +164,35 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Broadcast Stations
+                因为我喜欢你，我比任何人 都喜欢你: 瞳孔中的暗杀者
             
         </h1>
         <div class="content">
-            <p><a href="https://ac.nowcoder.com/acm/contest/13506/A">题目链接</a></p>
+            <p>发现早期的柯南剧场版构思总是十分细腻，首尾呼应，暗藏伏笔。</p>
 <a id="more"></a>
-<h3 id="Solution">Solution</h3>
-<p>树形dp, 用 $f[u][k]$ 表示以当前点为根节点, 且当且可以向上传递 $\geq k$ 的贡献并且其子树为全覆盖. 并用 $g[u][k]$ 表示所用距离 $u$ 小于等于 $k$ 并且将下方的所有结点覆盖的答案和的最小值. 方程转移考虑两个问题:</p>
-<ul>
-<li>若当前点设置的 $p\geq k$;</li>
-<li>若当前点由儿子节点可以向上传递 $k$, 故可以向上传递 $k + 1$.</li>
-</ul>
-<p>显然有 $g[u][k] = \sum{g[v][k - 1]}$, $v$ 是 $u$ 的子结点. 另外对于 $f$ 的转移则为:<br>
-$$<br>
-f[u][k] = min(f[u][k+1],k+g[u][k+1], f[v][k+1]+g[u][k+1]-g[v][k])(k&gt;0)<br>
-$$</p>
-<p>$$<br>
-f[u][0]=min(f[v][1]+g[u][1]-g[v][0])<br>
-$$</p>
-<p>时间复杂度: $O(n^2)$.</p>
-<h3 id="Code">Code</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> to, nxt;</span><br><span class="line">    Edge(<span class="keyword">int</span> _to = <span class="number">0</span>, <span class="keyword">int</span> _nxt = <span class="number">0</span>) : to(_to), nxt(_nxt) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">5e3</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> dp[MAX_N][MAX_N], dps[MAX_N][MAX_N], head[MAX_N];</span><br><span class="line">Edge e[MAX_N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> n, cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    e[++cnt].to = y; e[cnt].nxt = head[x]; head[x] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = e[i].to;</span><br><span class="line">        <span class="keyword">if</span> (v == fa) <span class="keyword">continue</span>;</span><br><span class="line">        dfs(v, u);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) dps[u][i] += dps[v][i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    dp[u][n] = n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = n - <span class="number">1</span>; k &gt;= <span class="number">0</span>; --k) &#123;</span><br><span class="line">        <span class="keyword">if</span> (k) dp[u][k] = <span class="built_in">min</span>(dp[u][k + <span class="number">1</span>], k + dps[u][k + <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">else</span> dp[u][k] = dp[u][k + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = e[i].to;</span><br><span class="line">            <span class="keyword">if</span> (v == fa) <span class="keyword">continue</span>;</span><br><span class="line">            dp[u][k] = <span class="built_in">min</span>(dp[u][k], dp[v][k + <span class="number">1</span>] + dps[u][k + <span class="number">1</span>] - dps[v][k]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dps[u][<span class="number">0</span>] = dp[u][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; ++k) dps[u][k] = <span class="built_in">min</span>(dps[u][k], dps[u][<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">        add(u, v); add(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[<span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>开头便是两位刑警连续被刺杀，唯一知道的是凶手用左手开枪，死亡讯息是用手紧紧抓住了左胸口。影片中在此情况的目暮警官甚至连毛利小五郎也不愿意半点消息，可见事态之严重，罪犯有极大概率是与警视厅相关的大人物！影片的开头廖廖几个镜头便渲染了这种紧张且较为沉重的氛围。</p>
+<p>主要事件是在饭店发生的，经过前两起事件，目暮警官已经知晓佐藤警官极可能成为下一个受害者。交代好人物及事件背景后事件就发生了，犯人事先在女洗手间的置物柜中放了一把开着的手电筒，然后趁佐藤警官进去补妆的空隙利用移动电话装置使整层楼停电，这时候手电筒的光就会从置物柜中透出，那么人就会理所当然打开将其取出，凶手在这时便能放冷箭。（这时候犯人智商还是非常高的！）并且为了在事后不被测出硝烟反应，凶手利用雨伞将硝烟挡在了身前。所以后来现场所有人都没有测出硝烟反应。</p>
+<p>然而本天衣无缝的计谋还是失算了。小兰在这时也去了洗手间，且恰好是小兰拿起了手电，而千钧一发之际佐藤自然是（不是）为小兰挡枪，而在惊慌中脱手的手电也照亮了凶手的脸！何谓“瞳孔的暗杀者”？恰当好处啊！真的是忍不住想要吐槽，前面的剧场版和后面的级别差太多了！前面直接看电影名都知道水平高超，而后面就是“颜色”+“莫名其妙的事物”。（绀青之拳… 纯黑（琴酒）的噩梦…）而此处，瞳孔一词指明了凶手的动机就是因为看到了凶手的长相，而配用暗杀者就直接上档次，既然是看得到的人，为何又成了暗杀者？这点在剧中其实得到了非常大的突出，暗杀不仅仅是看不到凶手，而且凶手就是眼前为自己细心治疗的心理医生！拍案，以为绝妙！</p>
+<p>可能由于惊吓，及对佐藤警官的愧疚，小兰失忆了。因为一些原因，白鸟的心理医生成了小兰的主治医师，也就是凶手，当然凶手还是容易猜的，因为表现得越有嫌疑的越不是凶手。遵循完美主义的凶手当然不会轻易放过小兰，小兰回家后的第一次外出便被直接从地铁站台被推下，然后柯南一个迅雷不及掩耳跳下去解救了小兰！作为电影，特技理应当是要有的，况且是推理题材，不来点动作还是比较容易沉闷与枯燥的。不过这一情节并非有意无意，而是为了后面去新兰最后一次约会的热带公园找寻记忆做铺垫，作为因为连累他人受伤而自闭的小兰自然不想让会为了她冲出地铁站台的柯南陪她一起去。</p>
+<p>最后自然就是故事的高潮：热带公园。首先所有犯罪嫌疑人都会到达热带公园准备接受审判，然后柯南先被安排出去理解一下消除硝烟反应的小花招，然后每个人都很乖地给他提供信息，然后成功破案。然后再是毛利小五郎等使用毛利排除法成功抓住假犯人，把所有工具人全部支开，最后！就是柯南的柯学秀了！先是一波正常的你追我赶，开枪射不中，然后犯人对高智商小学生很感兴趣，先听他仔细分析一波，然后继续你追我赶，最后都要射杀了再来个看你有什么遗言之类的类似环节，然后gg，并被逮捕。</p>
+<p>当然高潮部分不是由于犯人突然弱智产生的，而是由一些镜头砌成的。最后犯人会gg很大一个原因是因为广场上两小时一次的喷泉，使他无法正常地射击，而这在电影一开始便做好了铺垫，新一送给小兰获得空手道优胜奖的礼物，就是热带公园的喷泉，“你不是最喜欢看喷泉了吗？”而柯南想到这点并不是信手拈来，而是新一之前用冰可乐去贴小兰的脸，让小兰印象深刻并且通过电话告诉了柯南，而最后天才选手犯人自然是要射不中就算了还要射中园子给小兰买的可乐而因为小兰对可乐这一幕留有深刻印象而不舍得的放到包里的可乐，啊自然柯南就想到了嘛。我只能说，水平很高！还有另外一个推向高潮的情节就是，名场面：</p>
+<p>“你说 为什么，你为什么要拼了命的保护我呢？”</p>
+<p>“因为我喜欢你 当然是因为我喜欢你</p>
+<p>我比任何人 都喜欢你”</p>
+<p>给我磕！而这句话，并不由柯南首创，影片借由婚宴（好像不是，类似的东西）预新娘问起妃英理当时毛利怎么求婚的，竟然就是：</p>
+<p>“我喜欢你，我比地球上任何人都喜欢你”</p>
+<p>拊掌，以为绝妙。</p>
+<p>这部没有多线索并行，主要围绕一起事件展开。不过情节连贯，首尾呼应，犯人动机在理解范围之内，犯罪手法水准很高。此外，影片本是给一人一种警视厅有内幕的感觉，但其实确实暗示了一些高层的私心和不合法的势力范围波及，可能有在暗示什么，不想深究这点了。</p>
+<p>最后完美的小松未步的片尾曲《因为有你》，影片落下帷幕。唯美动人：因为有你，我变得坚强。</p>
+<p><img src="http://inxli.cn/image/conan.jpg" alt=""></p>
 
         </div>
         
                     <ul class="post-copyright">
-                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E5%9B%BE%E8%AE%BA/broadcast-stations/">Broadcast Stations</a></li>
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/Film/%E5%9B%A0%E4%B8%BA%E6%88%91%E5%96%9C%E6%AC%A2%E4%BD%A0%EF%BC%8C%E6%88%91%E6%AF%94%E4%BB%BB%E4%BD%95%E4%BA%BA-%E9%83%BD%E5%96%9C%E6%AC%A2%E4%BD%A0-%E7%9E%B3%E5%AD%94%E4%B8%AD%E7%9A%84%E6%9A%97%E6%9D%80%E8%80%85/">因为我喜欢你，我比任何人 都喜欢你: 瞳孔中的暗杀者</a></li>
                     <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
-                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E5%9B%BE%E8%AE%BA/broadcast-stations/">http://inxli.cn/%E5%9B%BE%E8%AE%BA/broadcast-stations/</a></li>
-                    <li><strong>发布时间：</strong>2021-03-29</li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/Film/%E5%9B%A0%E4%B8%BA%E6%88%91%E5%96%9C%E6%AC%A2%E4%BD%A0%EF%BC%8C%E6%88%91%E6%AF%94%E4%BB%BB%E4%BD%95%E4%BA%BA-%E9%83%BD%E5%96%9C%E6%AC%A2%E4%BD%A0-%E7%9E%B3%E5%AD%94%E4%B8%AD%E7%9A%84%E6%9A%97%E6%9D%80%E8%80%85/">http://inxli.cn/Film/%E5%9B%A0%E4%B8%BA%E6%88%91%E5%96%9C%E6%AC%A2%E4%BD%A0%EF%BC%8C%E6%88%91%E6%AF%94%E4%BB%BB%E4%BD%95%E4%BA%BA-%E9%83%BD%E5%96%9C%E6%AC%A2%E4%BD%A0-%E7%9E%B3%E5%AD%94%E4%B8%AD%E7%9A%84%E6%9A%97%E6%9D%80%E8%80%85/</a></li>
+                    <li><strong>发布时间：</strong>2021-04-22</li>
                     <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                 </li>
                 </ul>
@@ -204,7 +202,7 @@ $$</p>
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/DP/" rel="tag">DP</a>, <a class="has-link-grey -link" href="/tags/Tree-DP/" rel="tag">Tree DP</a>
+                    <a class="has-link-grey -link" href="/tags/Film/" rel="tag">Film</a>
                 </div>
             </div>
         </div>
@@ -234,17 +232,10 @@ $$</p>
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/CF/codecraft-21-and-cf-round-711-div-2/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">CodeCraft-21 and CF Round #711(Div.2)</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/Film/avatar/">
-                <span class="level-item">AVATAR</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/%E6%95%B0%E8%AE%BA/eratosthenes%E7%AD%9B%E6%B3%95-%E7%B4%A0%E6%95%B0%E8%83%BD%E6%9C%89%E5%A4%9A%E5%A5%87%E5%A6%99/">
+                <span class="level-item">Eratosthenes筛法: 素数能有多奇妙</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -393,25 +384,6 @@ $$</p>
 </div>
     
         
-
-    <div class="card widget column-left is-sticky" id="toc">
-        <div class="card-content">
-            <div class="menu">
-                <h3 class="menu-label">
-                    目录
-                </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#Solution">
-        <span class="has-mr-6">1</span>
-        <span>Solution</span>
-        </a></li><li>
-        <a class="is-flex" href="#Code">
-        <span class="has-mr-6">2</span>
-        <span>Code</span>
-        </a></li></ul>
-            </div>
-        </div>
-    </div>
 
     
     
