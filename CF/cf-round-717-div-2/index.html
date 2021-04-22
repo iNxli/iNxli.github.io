@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://inxli.cn/gallery/thumbnails/run.jpg">
 <meta property="article:published_time" content="2021-04-22T09:13:41.000Z">
-<meta property="article:modified_time" content="2021-04-22T09:42:03.727Z">
+<meta property="article:modified_time" content="2021-04-22T12:06:38.340Z">
 <meta property="article:author" content="iNx">
 <meta property="article:tag" content="CF">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 887 个字)
+                    6 分钟 读完 (大约 886 个字)
                 </span>
                 
                 
@@ -204,12 +204,10 @@ $$<br>
 (I+J(n-1))(I+J(n-2))(I+J(n-3))\ldots(I+J(2))<br>
 $$<br>
 可以发现任何矩阵与 $J$ 相乘会向右上角移动一个&quot;单位&quot;. 所以主对角线上的元素就是全部的 $I$ 相乘, 也就是 $1$. 而往右上角走一格的斜线上, 就是 $\sum_{i=2}^{n-1} i$. 可以发现就是离对角线有 $k$ 个单位的话就是:</p>
-
-$$
-\sum_{1<i_1,i_2,\ldots,i_k<n\\i_x\neq i_y(x\neq y)}\prod_{t=1}^k{i_t}
-$$
-
-<p>然后利用容斥原理计算这个答案, 记为 $g[k]$, 则有:</p>
+<p>$$<br>
+\sum_{1&lt;i_1,i_2,\ldots,i_k&lt;n \text{且}i_x\neq i_y(x\neq y)}\prod_{t=1}^k{i_t}<br>
+$$<br>
+然后利用容斥原理计算这个答案, 记为 $g[k]$, 则有:</p>
 
 $$
 g[k]=(2+\ldots+n)g[k-1]+\ldots+(2^k+\ldots+n^k)g[0]
