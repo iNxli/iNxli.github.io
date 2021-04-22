@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://inxli.cn/gallery/thumbnails/run.jpg">
 <meta property="article:published_time" content="2021-04-22T09:13:41.000Z">
-<meta property="article:modified_time" content="2021-04-22T12:06:38.340Z">
+<meta property="article:modified_time" content="2021-04-22T12:08:39.750Z">
 <meta property="article:author" content="iNx">
 <meta property="article:tag" content="CF">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@ $$<br>
 然后利用容斥原理计算这个答案, 记为 $g[k]$, 则有:</p>
 
 $$
-g[k]=(2+\ldots+n)g[k-1]+\ldots+(2^k+\ldots+n^k)g[0]
+g[k]=(2+\ldots+n)g[k-1]-(2^2+\ldots+n^2)g[k-2]+\ldots+(-1)^{k-1}(2^k+\ldots+n^k)g[0]
 $$
 
 <p>所以要计算 $k$ 阶等差数列, 利用伯努利数进行计算. 复杂度大概是个 $O(k^3\log MOD)$ 的.</p>
