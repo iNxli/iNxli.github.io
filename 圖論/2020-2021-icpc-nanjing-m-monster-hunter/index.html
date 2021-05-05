@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>2020-2021 ICPC Nanjing M. Monster Hunter - iNx</title>
+
+
+    <meta name="description" content="M. Monster Hunter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-2021 ICPC Nanjing M. Monster Hunter">
+<meta property="og:url" content="http://inxli.cn/%E5%9C%96%E8%AB%96/2020-2021-icpc-nanjing-m-monster-hunter/index.html">
+<meta property="og:site_name" content="iNx">
+<meta property="og:description" content="M. Monster Hunter">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
+<meta property="article:published_time" content="2021-04-01T08:48:14.000Z">
+<meta property="article:modified_time" content="2021-05-05T04:07:21.692Z">
+<meta property="article:author" content="iNx">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="Tree DP">
+<meta property="article:tag" content="背包">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/200401.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/tinx.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<!-- <body class="is-2-column"> -->
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                iNx
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首頁</a>
+                
+                <a class="navbar-item"
+                href="/archives">彙整</a>
+                
+                <a class="navbar-item"
+                href="/categories">分類</a>
+                
+                <a class="navbar-item"
+                href="/tags">標籤</a>
+                
+                <a class="navbar-item"
+                href="/about">關於</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnails/200401.png" alt="2020-2021 ICPC Nanjing M. Monster Hunter">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-04-01T08:48:14.000Z">2021-04-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%9C%96%E8%AB%96/">圖論</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分鐘 閱讀文 (大約 921 個字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> Besuche
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                2020-2021 ICPC Nanjing M. Monster Hunter
+            
+        </h1>
+        <div class="content">
+            <h2 id="M-Monster-Hunter"><a href="https://codeforc.es/gym/102992/problem/M">M. Monster Hunter</a></h2>
+<a id="more"></a>
+<h3 id="Solution">Solution</h3>
+<p>说是一种叫有依懒的背包问题. 于是先看一道例题:</p>
+<h4 id="例题-有依赖的背包">例题: <a href="https://www.acwing.com/problem/content/10/">有依赖的背包</a></h4>
+<p>这个问题中的物品关系形成一棵树, 一个物品可以被选当前仅当其父亲被选择. 故原背包问题的状态 <code>f[i][k]</code> 转移的难点在于不知道父亲是否被选. 为解决此问题, 考虑树形dp, 用 <code>f[u][k]</code> 表示当前结点必须选, 以此结点为根节点的子树在背包容量为 $k$ 时的最大价值. 接着不断合并儿子节点来更新当前结点的答案:</p>
+
+$$
+f[u][k] = \max_{v\in son(u)}\{f[v][k - j]+f[u][j]\}
+$$
+
+<p>很显然, 这样的时间复杂度为 $O(n^3)$.</p>
+<p>再看现在这题, 反过来考虑问题: 保留 $0,1,\ldots, n$ 个结点可以得到的最小代价. 很容易发现一棵树的代价即为<strong>所有非根结点的代价的2倍+根节点的代价</strong>, 虽然这和接下来使用动态规划没有什么太大关系. 类似例题的方法, 用 <code>f[u][k][0/1]</code> 表示以 $u$ 为根的子树选了 $k$ 个点的最小代价($0$ 表示当前结点不选, $1$ 表示当前结点选). 容易得到转移:</p>
+ 
+$$
+f[u][k][0] = \min_{v\in son(u)}\{f[v][j][0/1]+f[u][k-j][0]\}
+$$
+
+$$
+f[u][k][1]=\min_{v\in son{(u)}}\{f[v][j][0]+f[u][k-j][1],f[v][j][1]+f[u][k-j][1]+hp[v]\}
+$$
+
+
+<p>第二个方程是因为当父亲结点和儿子节点都选择那么儿子节点不是根, 故要再加上自己的代价. 但是容易发现这样的时间复杂度亦是: $O(n^3)$. TLE…</p>
+<p>做一些优化, 可以发现对于某个结点 $u$, 在对某个儿子进行合并的时候, 当前可用的状态的第二维其实只有之前已经被合并的儿子的树的大小, 而对于当前儿子, 其第二维只有自己的树的大小. 但是这个复杂度似乎还是 $O(n^3)$ 的, 但是实际上这是一个不显然的结论, 实际上的复杂度为 $O(n^2)$! 接下来简单证明:</p>
+<ul>
+<li>首先转移数为</li>
+</ul>
+
+$$
+\sum_{u\in T}\sum_{i=1}^{size\ of\ son(u)}siz[son(u,i)](1+siz[son(u,1)+\ldots+siz[son(u,i-1)]])
+$$
+
+<ul>
+<li>接着对上面的式子简单放缩:</li>
+</ul>
+
+$$
+\begin{align*}
+UHS&=\sum_{u\in T}siz[u]+\sum_{u\in T}\sum_{i\ne j}(siz[son[i]]siz[son[j]])\\
+&\leq h\times n+\frac{1}{2}\sum_{u\in T}\left(\sum siz[son[i]]+1\right)^2-\sum{siz^2[son[i]]}\\
+&\leq n^2+\frac{1}{2}\sum_{u\in T}siz[u]^2-\sum{siz^2[son[i]]}\\
+&\leq n^2+\frac{1}{2}siz^2[root]\\
+&=O(n^2)
+\end{align*}
+$$
+
+<p>证毕.</p>
+<h3 id="Code">Code</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 5e12</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> to, nxt;</span><br><span class="line">    Edge(<span class="keyword">int</span> _to = <span class="number">0</span>, <span class="keyword">int</span> _nxt = <span class="number">0</span>) : to(_to), nxt(_nxt) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">2e3</span> + <span class="number">7</span>;</span><br><span class="line">Edge e[MAX_N];</span><br><span class="line"><span class="keyword">int</span> dp[MAX_N][MAX_N][<span class="number">2</span>], head[MAX_N], hp[MAX_N], siz[MAX_N];</span><br><span class="line"><span class="keyword">int</span> T, n, cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    e[++cnt].to = v; e[cnt].nxt = head[u]; head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    dp[u][<span class="number">1</span>][<span class="number">1</span>] = hp[u], dp[u][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    siz[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = e[i].to;</span><br><span class="line">        dfs(v);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = siz[u]; k &gt;= <span class="number">0</span>; --k) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = siz[v]; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">                dp[u][j + k][<span class="number">0</span>] = <span class="built_in">min</span>(dp[u][j + k][<span class="number">0</span>], <span class="built_in">min</span>(dp[v][j][<span class="number">0</span>] + dp[u][k][<span class="number">0</span>], dp[v][j][<span class="number">1</span>] + dp[u][k][<span class="number">0</span>]));</span><br><span class="line">                dp[u][j + k][<span class="number">1</span>] = <span class="built_in">min</span>(dp[u][j + k][<span class="number">1</span>], <span class="built_in">min</span>(dp[v][j][<span class="number">1</span>] + dp[u][k][<span class="number">1</span>] + hp[v], dp[v][j][<span class="number">0</span>] + dp[u][k][<span class="number">1</span>]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        siz[u] += siz[v];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n);</span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) head[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= n; ++k) &#123;</span><br><span class="line">                dp[i][k][<span class="number">0</span>] = dp[i][k][<span class="number">1</span>] = INF;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> p;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;p);</span><br><span class="line">            add(p, i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, hp + i);</span><br><span class="line">        dfs(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i; --i) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld "</span>, <span class="built_in">min</span>(dp[<span class="number">1</span>][i][<span class="number">0</span>], dp[<span class="number">1</span>][i][<span class="number">1</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, <span class="built_in">min</span>(dp[<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>], dp[<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+                    <ul class="post-copyright">
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E5%9C%96%E8%AB%96/2020-2021-icpc-nanjing-m-monster-hunter/">2020-2021 ICPC Nanjing M. Monster Hunter</a></li>
+                    <li><strong>本文作者：</strong><a href="http://iNxli.cn">iNx</a></li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E5%9C%96%E8%AB%96/2020-2021-icpc-nanjing-m-monster-hunter/">http://inxli.cn/%E5%9C%96%E8%AB%96/2020-2021-icpc-nanjing-m-monster-hunter/</a></li>
+                    <li><strong>发布时间：</strong>2021-04-01</li>
+                    <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+                </li>
+                </ul>
+            
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/DP/" rel="tag">DP</a>, <a class="has-link-grey -link" href="/tags/Tree-DP/" rel="tag">Tree DP</a>, <a class="has-link-grey -link" href="/tags/%E8%83%8C%E5%8C%85/" rel="tag">背包</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜歡這篇文章嗎? 贊助一下作者吧!</h3>
+        <div class="buttons is-centered">
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/%E6%95%B8%E5%AD%B8/2020-2021-icpc-nanjing-f-fireworks/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">2020-2021 ICPC Nanjing F.Fireworks</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/CF/codecraft-21-and-cf-round-711-div-2/">
+                <span class="level-item">CodeCraft-21 and CF Round #711(Div.2)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'wgDHmj0hwwDe8edfQq0VI9Uy-gzGzoHsz',
+        app_key: 'HgaMhL7cgcYqdaIXtfFm6D4p',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="iNx">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        iNx
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        後之視今，亦猶今之視昔
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Xi&#39;an, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            38
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            24
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1261751598&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener">
+                QQ聯繫</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/iNxli">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="QQ邮箱" href="mailto:1261751598@qq.com">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="gmail" href="mailto:sjsinx@gmail.com">
+                
+                <i class="fab fa-google"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="知乎" href="https://www.zhihu.com/people/inx-37">
+                
+                <i class="fab fa-zhihu"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#M-Monster-Hunter">
+        <span class="has-mr-6">1</span>
+        <span>M. Monster Hunter</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Solution">
+        <span class="has-mr-6">1.1</span>
+        <span>Solution</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#例题-有依赖的背包">
+        <span class="has-mr-6">1.1.1</span>
+        <span>例题: 有依赖的背包</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Code">
+        <span class="has-mr-6">1.2</span>
+        <span>Code</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    iNx
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 iNx&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Von <span id="busuanzi_value_site_uv">0</span> Nutzern besucht
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://iNxli.cn',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
