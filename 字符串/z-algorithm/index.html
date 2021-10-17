@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://inxli.cn/gallery/thumbnails/string.jpg">
 <meta property="article:published_time" content="2021-10-17T09:20:01.000Z">
-<meta property="article:modified_time" content="2021-10-17T09:41:47.780Z">
+<meta property="article:modified_time" content="2021-10-17T10:50:18.545Z">
 <meta property="article:author" content="iNx">
 <meta property="article:tag" content="字符串">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 374 个字)
+                    3 分钟 读完 (大约 378 个字)
                 </span>
                 
                 
@@ -171,11 +171,14 @@
             <p>Z 算法，也即擴展 KMP。z 函數與 $\pi$ 函數區別在於，$z[i]$ 表示的是以 $i$ 為起始點與前綴匹配的最大長度，而 $\pi[i]$ 則是以 $i$ 為結尾。</p>
 <a id="more"></a>
 <p>z函數的計算方法與 Manacher 算法類似，都是利用了雙指針的思想。在考慮到 $z[i]$ 時，假設 $z[0],z[1],\ldots,z[i - 1]$ 的答案已經得出，並且當前最大的 $k + z[k] - 1(k=0,1,\ldots,i-1)$ 記為 $r$，並記此時的 $k$ 為 $l$，那麼現在有兩種情況：</p>
-<ol>
-<li>若 $i\leq r$，那麼就有 $s[k - l] = s<a href="k%5Cin%5Bi,r%5D%5Ccap%5Cmathbb%7BN%7D">k</a>$，所以若 $z[i-l]&lt;(r-i+1)$，那麼 $z[i]=z[i - l]$；否則暴力地擴張 $r$，檢查 $s[k]=s[k-r](k &gt; r)$。</li>
-<li>若 $i &gt; r$，那麼和第一種情況的第二種子情況一樣，暴力擴張。</li>
-</ol>
-<p>由於 $r$ 的單向擴張知該算法複雜度為 $O(n)$。</p>
+
+
+1. 若 $i\leq r$，那麼就有 $s[k - l] = s[k]$，$(k\in [i,r]\cap\mathbb{N})$，所以若 $z[i-l]<(r-i+1)$，那麼 $z[i]=z[i - l]$；否則暴力地擴張 $r$，檢查 $s[k]=s[k-r]$ ，$(k > r)$。
+2. 若 $i > r$，那麼和第一種情況的第二種子情況一樣，暴力擴張。
+
+由於 $r$ 的單向擴張知該算法複雜度為 $O(n)$。
+
+
 <p>C++ 實現如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">z_fun</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">z</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, l = <span class="number">0</span>, r = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> k = (i &lt;= r &amp;&amp; z[i - l] &lt; (r - i + <span class="number">1</span>)) ? z[i - l] : <span class="built_in">max</span>(<span class="number">0l</span>l, r - i + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span> (i + k &lt; n &amp;&amp; s[k] == s[i + k]) ++k;</span><br><span class="line">        z[i] = k--;</span><br><span class="line">        <span class="keyword">if</span> (i + k &gt; r) l = i, r = i + k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>學習這個算法是因為昨天訓練時做到 2018 年 ICPC 南京賽區 M 題，只想到了用前綴函數 $\pi$ 結果誤入歧途。後來發現只要求一下 $z$ 的前綴和就行了。</p>
