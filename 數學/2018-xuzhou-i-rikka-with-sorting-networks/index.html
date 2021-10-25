@@ -7,23 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>讀《海底兩萬里》 - iNx</title>
+<title>2018 XuZhou I. Rikka with Sorting Networks - iNx</title>
 
 
-    <meta name="description" content="在今天這個時代讀這本書時，感覺其內容更像冒險故事而非科幻。書中內容倒沒有給我天馬行空的感覺，可能是涉及的許多知識今日已成常識及自身對">
+    <meta name="description" content="題目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="讀《海底兩萬里》">
-<meta property="og:url" content="http://inxli.cn/Book/%E8%AE%80%E3%80%8A%E6%B5%B7%E5%BA%95%E5%85%A9%E8%90%AC%E9%87%8C%E3%80%8B/index.html">
+<meta property="og:title" content="2018 XuZhou I. Rikka with Sorting Networks">
+<meta property="og:url" content="http://inxli.cn/%E6%95%B8%E5%AD%B8/2018-xuzhou-i-rikka-with-sorting-networks/index.html">
 <meta property="og:site_name" content="iNx">
-<meta property="og:description" content="在今天這個時代讀這本書時，感覺其內容更像冒險故事而非科幻。書中內容倒沒有給我天馬行空的感覺，可能是涉及的許多知識今日已成常識及自身對">
+<meta property="og:description" content="題目">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/ocean.webp">
-<meta property="article:published_time" content="2021-09-27T13:37:23.000Z">
-<meta property="article:modified_time" content="2021-09-27T13:47:19.002Z">
+<meta property="og:image" content="http://inxli.cn/gallery/thumbnails/solution.webp">
+<meta property="article:published_time" content="2021-10-25T10:15:25.000Z">
+<meta property="article:modified_time" content="2021-10-25T10:41:36.327Z">
 <meta property="article:author" content="iNx">
-<meta property="article:tag" content="Book">
+<meta property="article:tag" content="數學">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/ocean.webp">
+<meta name="twitter:image" content="http://inxli.cn/gallery/thumbnails/solution.webp">
 
 
 
@@ -132,7 +132,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/ocean.webp" alt="讀《海底兩萬里》">
+            <img class="thumbnail" src="/gallery/thumbnails/solution.webp" alt="2018 XuZhou I. Rikka with Sorting Networks">
         </span>
     </div>
     
@@ -140,17 +140,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-09-27T13:37:23.000Z">2021-09-27</time>
+                <time class="level-item has-text-grey" datetime="2021-10-25T10:15:25.000Z">2021-10-25</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Book/">Book</a>
+                <a class="has-link-grey -link" href="/categories/%E6%95%B8%E5%AD%B8/">數學</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 251 个字)
+                    4 分钟 读完 (大约 605 个字)
                 </span>
                 
                 
@@ -164,19 +164,36 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                讀《海底兩萬里》
+                2018 XuZhou I. Rikka with Sorting Networks
             
         </h1>
         <div class="content">
-            <p>在今天這個時代讀這本書時，感覺其內容更像冒險故事而非科幻。書中內容倒沒有給我天馬行空的感覺，可能是涉及的許多知識今日已成常識及自身對<a id="more"></a>海洋和中世紀後地理大發現知之甚少有關。而反倒是裡頭提到的一些海洋生物引起了我的興趣。書中第一人稱視角描繪的世界是生動形象的，不同人物形象刻畫十分到位。“鸚鵡螺號”自始至終渲染了神秘色彩，艇中總是空空無人，尼摩船長神秘的身世及對陸地地深深仇恨，關心受壓迫的人。而這一切讀者亟待作者闡明的懸念，卻在大漩渦中戛然而止，令人想入非非。只是走馬觀花的我並不能推出艇長大致的身份。</p>
+            <p><a href="https://codeforces.com/gym/350577/problem/I">題目</a></p>
+<a id="more"></a>
+<p>閱題後，模數令人感到蹊蹺，很少會有一個素模數範圍在 $1e8-1e9$，另外很顯然當 $k=0$ 時理應當可以直接由組合計數的方法求得答案。</p>
+<p>思考如何構造一個幾乎是排好序的排列 $x$：</p>
+<p>考慮 $n$ 的位置，可以發現 $n$ 是其中最大的數，所以如果 $n$ 的位置在 $1,2,\ldots, n - 2$，則其必不在 $x$ 的最長子序列中，是故除此以外其他位置理應當為 $1,2,\ldots, n -1$ 依次排列；若 $n$ 的位置在 $n - 1$，那麼其必定可以作為 $x$ 的最長子序列的結尾，所以等價於滿足 $1, 2, \ldots, n-2$ 位置上的數已經完全排好序，故有 $(n - 1)$ 種；若 $n$ 的位置在 $n$，則其他 $(n-1)$ 個數的排列是幾乎排好序的。最後還需加上 $1,2,\ldots,n$ 這個完全排好序的排列。</p>
+<p>故答案為</p>
+
+$$
+\begin{align*}
+&1+\sum_{i=1}^{n}(2i-3)\\
+=&(n-1)^2+1
+\end{align*}
+$$
+
+<p>這時候再考慮如果有 $k$ 個排列因子，那麼一個排列如果合法，其經過 $k$ 個排列因子作用後必然在這 $(n-1)^2+1$ 種情況之中。所以倒過來想，就是對這些最終排列倒著使用排列因子，查看最後有多少種排列。而作用這些排列因子無非是 $u, v$ 位置換與不換，故僅有 $2^k$ 種情況，所以總的也就最多 $2^k\times((n-1)^2+1)$ 種情況，根本不會超過 $1e7$，所以模數只是起蒙蔽之用。</p>
+<p>此時若直接搜索，然後利用 <code>std::set&lt;T&gt;</code> 的話，會多一個 $n\log(n)$ 可能會導致 TLE。這時候需要發現由不同的排列生成的排列必定不相同，這是由於若存在一個相同的情況，那麼必定是在某一步排列因子作用後，排列變為相同，故此時對應即將作用的排列因子的參數 $u, v$，有：</p>
+<p>其中一個序列為 $x[u],x[v]$ 順序，另一個為 $x[v],x[u]$。但是由於此時為因子倒序作用，故前者必定必後者小，但這是不可能的。矛盾，結論得證。</p>
+<p>時間複雜度：$O(T2^{k}n^2)$。</p>
 
         </div>
         
                     <ul class="post-copyright">
-                    <li><strong>本文标题：</strong><a href="http://inxli.cn/Book/%E8%AE%80%E3%80%8A%E6%B5%B7%E5%BA%95%E5%85%A9%E8%90%AC%E9%87%8C%E3%80%8B/">讀《海底兩萬里》</a></li>
+                    <li><strong>本文标题：</strong><a href="http://inxli.cn/%E6%95%B8%E5%AD%B8/2018-xuzhou-i-rikka-with-sorting-networks/">2018 XuZhou I. Rikka with Sorting Networks</a></li>
                     <li><strong>本文作者：</strong><a href="http://inxli.cn">iNx</a></li>
-                    <li><strong>本文链接：</strong><a href="http://inxli.cn/Book/%E8%AE%80%E3%80%8A%E6%B5%B7%E5%BA%95%E5%85%A9%E8%90%AC%E9%87%8C%E3%80%8B/">http://inxli.cn/Book/%E8%AE%80%E3%80%8A%E6%B5%B7%E5%BA%95%E5%85%A9%E8%90%AC%E9%87%8C%E3%80%8B/</a></li>
-                    <li><strong>发布时间：</strong>2021-09-27</li>
+                    <li><strong>本文链接：</strong><a href="http://inxli.cn/%E6%95%B8%E5%AD%B8/2018-xuzhou-i-rikka-with-sorting-networks/">http://inxli.cn/%E6%95%B8%E5%AD%B8/2018-xuzhou-i-rikka-with-sorting-networks/</a></li>
+                    <li><strong>发布时间：</strong>2021-10-25</li>
                     <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                 </li>
                 </ul>
@@ -186,7 +203,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Book/" rel="tag">Book</a>
+                    <a class="has-link-grey -link" href="/tags/%E6%95%B8%E5%AD%B8/" rel="tag">數學</a>
                 </div>
             </div>
         </div>
@@ -216,17 +233,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/%E5%AD%97%E7%AC%A6%E4%B8%B2/z-algorithm/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Z Algorithm</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/Travel/%E7%A6%8F%E5%B7%9E%E8%A8%98/">
-                <span class="level-item">福州記</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/uncategorized/%E5%BA%8F/">
+                <span class="level-item">序</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
